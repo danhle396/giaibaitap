@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 export const metadata: Metadata = buildMetadata({
   title: "Điều Khoản Sử Dụng | Giải Bài Tập",
-  description: "Điều khoản sử dụng dịch vụ của giaibaitap.com.vn.",
+  description: "Điều khoản sử dụng dịch vụ của giaibaitap247.com.",
   canonical: "/dieu-khoan",
 });
 
@@ -18,7 +18,7 @@ export default function DieuKhoanPage() {
         <p><em>Cập nhật lần cuối: 09/05/2026</em></p>
 
         <p>
-          Bằng cách truy cập và sử dụng <strong>giaibaitap.com.vn</strong>, bạn đồng ý tuân thủ các điều khoản sử dụng dưới đây.
+          Bằng cách truy cập và sử dụng <strong>giaibaitap247.com</strong>, bạn đồng ý tuân thủ các điều khoản sử dụng dưới đây.
         </p>
 
         <h2>1. Mục đích sử dụng</h2>
@@ -28,7 +28,7 @@ export default function DieuKhoanPage() {
 
         <h2>2. Bản quyền nội dung</h2>
         <p>
-          Tất cả nội dung trên website (văn bản, hình ảnh, công thức) thuộc bản quyền của <strong>giaibaitap.com.vn</strong> hoặc các tác giả tương ứng. Nghiêm cấm sao chép, phân phối lại mà không có sự cho phép bằng văn bản.
+          Tất cả nội dung trên website (văn bản, hình ảnh, công thức) thuộc bản quyền của <strong>giaibaitap247.com</strong> hoặc các tác giả tương ứng. Nghiêm cấm sao chép, phân phối lại mà không có sự cho phép bằng văn bản.
         </p>
 
         <h2>3. Tuyên bố miễn trách nhiệm</h2>
@@ -45,7 +45,7 @@ export default function DieuKhoanPage() {
         <p>Các điều khoản này được điều chỉnh bởi pháp luật nước Cộng hòa Xã hội Chủ nghĩa Việt Nam.</p>
 
         <h2>6. Liên hệ</h2>
-        <p><a href="mailto:lienhe@giaibaitap.com.vn">lienhe@giaibaitap.com.vn</a></p>
+        <p><a href="mailto:lienhe@giaibaitap247.com">lienhe@giaibaitap247.com</a></p>
       </article>
     </div>
   );

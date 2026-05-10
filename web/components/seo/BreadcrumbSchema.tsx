@@ -1,6 +1,6 @@
 import type { BreadcrumbItem } from "@/types";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap.com.vn";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 
 export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
   const schema = {

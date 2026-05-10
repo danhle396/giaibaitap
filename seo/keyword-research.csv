@@ -1,0 +1,205 @@
+category,keyword,intent,priority,notes
+head_lop,giải bài tập lớp 1,info,P0,landing page lop-1
+head_lop,giải bài tập lớp 2,info,P0,landing page lop-2
+head_lop,giải bài tập lớp 3,info,P0,landing page lop-3
+head_lop,giải bài tập lớp 4,info,P0,landing page lop-4
+head_lop,giải bài tập lớp 5,info,P0,landing page lop-5
+head_lop,giải bài tập lớp 6,info,P0,landing page lop-6
+head_lop,giải bài tập lớp 7,info,P0,landing page lop-7
+head_lop,giải bài tập lớp 8,info,P0,landing page lop-8
+head_lop,giải bài tập lớp 9,info,P0,landing page lop-9
+head_lop,giải bài tập lớp 10,info,P0,landing page lop-10
+head_lop,giải bài tập lớp 11,info,P0,landing page lop-11
+head_lop,giải bài tập lớp 12,info,P0,landing page lop-12
+head_mon,giải toán lớp 6,info,P0,
+head_mon,giải toán lớp 7,info,P0,
+head_mon,giải toán lớp 8,info,P0,
+head_mon,giải toán lớp 9,info,P0,
+head_mon,giải toán lớp 10,info,P0,
+head_mon,giải toán lớp 11,info,P0,
+head_mon,giải toán lớp 12,info,P0,
+head_mon,giải văn lớp 6,info,P0,
+head_mon,giải văn lớp 7,info,P0,
+head_mon,giải văn lớp 8,info,P0,
+head_mon,giải văn lớp 9,info,P0,
+head_mon,ngữ văn lớp 10,info,P0,
+head_mon,ngữ văn lớp 11,info,P0,
+head_mon,ngữ văn lớp 12,info,P0,
+head_mon,giải tiếng anh lớp 6,info,P1,
+head_mon,giải tiếng anh lớp 9,info,P1,
+head_mon,giải tiếng anh lớp 12,info,P1,
+head_mon,giải vật lý lớp 9,info,P1,
+head_mon,giải vật lý lớp 10,info,P1,
+head_mon,giải vật lý lớp 11,info,P1,
+head_mon,giải vật lý lớp 12,info,P1,
+head_mon,giải hóa lớp 9,info,P1,
+head_mon,giải hóa lớp 10,info,P1,
+head_mon,giải hóa lớp 11,info,P1,
+head_mon,giải hóa lớp 12,info,P1,
+head_mon,giải sinh lớp 10,info,P2,
+head_mon,giải sinh lớp 11,info,P2,
+head_mon,giải sinh lớp 12,info,P2,
+head_mon,giải lịch sử lớp 12,info,P2,
+head_mon,giải địa lý lớp 12,info,P2,
+head_mon,giải gdcd lớp 12,info,P2,
+head_mon,giải tin học lớp 12,info,P2,
+bo_sach,giải toán lớp 6 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 7 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 8 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 9 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 10 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 11 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 12 kết nối tri thức,info,P0,
+bo_sach,giải toán lớp 6 chân trời sáng tạo,info,P1,
+bo_sach,giải toán lớp 9 chân trời sáng tạo,info,P1,
+bo_sach,giải toán lớp 12 chân trời sáng tạo,info,P1,
+bo_sach,giải toán lớp 6 cánh diều,info,P1,
+bo_sach,giải toán lớp 9 cánh diều,info,P1,
+bo_sach,giải toán lớp 12 cánh diều,info,P1,
+bo_sach,giải văn lớp 6 kết nối tri thức,info,P0,
+bo_sach,giải văn lớp 9 kết nối tri thức,info,P0,
+bo_sach,giải văn lớp 10 kết nối tri thức,info,P0,
+bo_sach,giải văn lớp 12 kết nối tri thức,info,P0,
+sgk_sbt,giải sgk toán 12,info,P0,
+sgk_sbt,giải sgk toán 11,info,P0,
+sgk_sbt,giải sgk toán 10,info,P0,
+sgk_sbt,giải sbt toán 12,info,P0,
+sgk_sbt,giải sbt toán 11,info,P0,
+sgk_sbt,giải sbt toán 9,info,P0,
+sgk_sbt,giải vbt toán lớp 6,info,P1,
+sgk_sbt,giải sgk hóa 12,info,P1,
+sgk_sbt,giải sgk hóa 11,info,P1,
+sgk_sbt,giải sgk lý 12,info,P1,
+sgk_sbt,giải sgk lý 11,info,P1,
+soan_van,soạn bài chí phèo,info,P0,văn 11
+soan_van,soạn bài tuyên ngôn độc lập,info,P0,văn 12
+soan_van,soạn bài vợ nhặt,info,P0,văn 12
+soan_van,soạn bài việt bắc,info,P0,văn 12
+soan_van,soạn bài đất nước,info,P0,văn 12
+soan_van,soạn bài tây tiến,info,P0,văn 12
+soan_van,soạn bài người lái đò sông đà,info,P0,văn 12
+soan_van,soạn bài rừng xà nu,info,P0,văn 12
+soan_van,soạn bài chiếc thuyền ngoài xa,info,P0,văn 12
+soan_van,soạn bài hồn trương ba da hàng thịt,info,P0,văn 12
+soan_van,soạn bài vợ chồng a phủ,info,P0,văn 12
+soan_van,soạn bài ai đã đặt tên cho dòng sông,info,P0,văn 12
+soan_van,soạn bài đàn ghi ta của lor-ca,info,P1,văn 12
+soan_van,soạn bài hai đứa trẻ,info,P0,văn 11
+soan_van,soạn bài chữ người tử tù,info,P0,văn 11
+soan_van,soạn bài hạnh phúc của một tang gia,info,P0,văn 11
+soan_van,soạn bài vội vàng,info,P0,văn 11
+soan_van,soạn bài đây thôn vĩ dạ,info,P0,văn 11
+soan_van,soạn bài tràng giang,info,P0,văn 11
+soan_van,soạn bài chiều tối,info,P0,văn 11
+soan_van,soạn bài từ ấy,info,P1,văn 11
+soan_van,soạn bài lão hạc,info,P0,văn 8
+soan_van,soạn bài tức nước vỡ bờ,info,P0,văn 8
+soan_van,soạn bài cô bé bán diêm,info,P0,văn 8
+soan_van,soạn bài chiếc lá cuối cùng,info,P0,văn 8
+soan_van,soạn bài đánh nhau với cối xay gió,info,P1,văn 8
+soan_van,soạn bài tôi đi học,info,P0,văn 8
+soan_van,soạn bài làng,info,P0,văn 9
+soan_van,soạn bài lặng lẽ sa pa,info,P0,văn 9
+soan_van,soạn bài chiếc lược ngà,info,P0,văn 9
+soan_van,soạn bài bến quê,info,P0,văn 9
+soan_van,soạn bài những ngôi sao xa xôi,info,P0,văn 9
+soan_van,soạn bài bài thơ về tiểu đội xe không kính,info,P0,văn 9
+soan_van,soạn bài đoàn thuyền đánh cá,info,P0,văn 9
+soan_van,soạn bài bếp lửa,info,P0,văn 9
+soan_van,soạn bài ánh trăng,info,P0,văn 9
+soan_van,soạn bài viếng lăng bác,info,P0,văn 9
+soan_van,soạn bài mùa xuân nho nhỏ,info,P0,văn 9
+soan_van,soạn bài sang thu,info,P0,văn 9
+soan_van,soạn bài nói với con,info,P0,văn 9
+soan_van,truyện kiều phân tích,info,P0,văn 10
+soan_van,soạn bài truyện kiều,info,P0,văn 10
+soan_van,phân tích nhân vật chí phèo,info,P0,
+soan_van,phân tích bài thơ tây tiến,info,P0,
+soan_van,phân tích bài thơ việt bắc,info,P0,
+de_thi,đề thi tốt nghiệp thpt 2025 môn toán,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn văn,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn tiếng anh,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn lý,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn hóa,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn sinh,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn sử,info,P0,seasonal
+de_thi,đề thi tốt nghiệp thpt 2025 môn địa,info,P0,seasonal
+de_thi,đề thi vào lớp 10 môn toán,info,P0,
+de_thi,đề thi vào lớp 10 môn văn,info,P0,
+de_thi,đề thi vào lớp 10 môn anh,info,P0,
+de_thi,đề thi học sinh giỏi toán 9,info,P1,
+de_thi,đề thi học sinh giỏi toán 12,info,P1,
+de_thi,đề thi giữa kì 1 toán 12,info,P0,seasonal
+de_thi,đề thi cuối kì 1 toán 12,info,P0,seasonal
+de_thi,đề thi giữa kì 2 toán 12,info,P0,seasonal
+de_thi,đề thi cuối kì 2 toán 12,info,P0,seasonal
+de_thi,đề minh họa thpt quốc gia 2025 toán,info,P0,seasonal
+de_thi,đề minh họa thpt quốc gia 2025 văn,info,P0,seasonal
+de_thi,đề thi thử thpt quốc gia 2025 toán,info,P1,
+de_thi,đề thi thpt quốc gia 2024 môn toán có đáp án,info,P1,
+trac_nghiem,trắc nghiệm toán 12 chương 1,info,P1,
+trac_nghiem,trắc nghiệm toán 12 chương 2,info,P1,
+trac_nghiem,trắc nghiệm hóa 12 chương 1,info,P1,
+trac_nghiem,trắc nghiệm sinh 12 di truyền,info,P1,
+trac_nghiem,trắc nghiệm sử 12 online,info,P2,
+trac_nghiem,trắc nghiệm địa 12 online,info,P2,
+trac_nghiem,trắc nghiệm tiếng anh 12,info,P2,
+ly_thuyet,lý thuyết toán 12 chương 1,info,P1,
+ly_thuyet,lý thuyết hàm số bậc 3,info,P1,
+ly_thuyet,lý thuyết logarit,info,P1,
+ly_thuyet,lý thuyết tích phân,info,P1,
+ly_thuyet,lý thuyết số phức,info,P1,
+ly_thuyet,lý thuyết hình không gian 12,info,P1,
+ly_thuyet,công thức lượng giác,info,P0,evergreen
+ly_thuyet,công thức đạo hàm,info,P0,evergreen
+ly_thuyet,công thức nguyên hàm,info,P0,evergreen
+ly_thuyet,công thức hóa học 12,info,P0,evergreen
+ly_thuyet,bảng tuần hoàn hóa học,info,P0,evergreen
+long_tail,giải bài 1 trang 9 toán 12,info,P1,
+long_tail,giải bài 2 trang 10 toán 12,info,P1,
+long_tail,giải bài 3 trang 18 toán 12,info,P1,
+long_tail,giải bài 1 trang 19 sgk toán 11,info,P1,
+long_tail,giải bài 1 trang 8 sgk hóa 12,info,P1,
+long_tail,giải bài 1 trang 6 vật lý 12,info,P1,
+long_tail,giải bài tập toán 12 trang 18 kết nối tri thức,info,P1,
+long_tail,bài 1 ứng dụng đạo hàm khảo sát hàm số,info,P1,
+long_tail,bài 1 tính đơn điệu của hàm số,info,P1,
+long_tail,bài 2 cực trị của hàm số,info,P1,
+long_tail,bài 3 đường tiệm cận của đồ thị hàm số,info,P1,
+long_tail,bài 4 khảo sát sự biến thiên và vẽ đồ thị,info,P1,
+long_tail,giải toán lớp 6 trang 8,info,P2,
+long_tail,giải toán lớp 9 trang 9,info,P2,
+long_tail,giải vbt toán lớp 5 trang 10,info,P2,
+brand_competitor,vietjack,nav,P2,competitor reference
+brand_competitor,loigiaihay,nav,P2,competitor
+brand_competitor,toploigiai,nav,P2,competitor
+brand_competitor,hoctot.hocmai,nav,P2,competitor
+giai_tri_voc,sách giáo khoa toán 12 mới,info,P1,
+giai_tri_voc,chương trình giáo dục phổ thông 2018 toán,info,P2,
+giai_tri_voc,bộ sách kết nối tri thức,info,P1,
+giai_tri_voc,bộ sách chân trời sáng tạo,info,P1,
+giai_tri_voc,bộ sách cánh diều,info,P1,
+giai_tri_voc,sgk toán 12 tập 1,info,P1,
+giai_tri_voc,sgk toán 12 tập 2,info,P1,
+mua_thi,thi vào 10 cần ôn gì,info,P1,
+mua_thi,kinh nghiệm thi tốt nghiệp thpt,info,P1,
+mua_thi,cách học tốt môn toán,info,P1,
+mua_thi,cách học tốt môn văn,info,P1,
+mua_thi,cấu trúc đề thi tốt nghiệp thpt 2025,info,P0,seasonal
+mua_thi,cấu trúc đề thi vào 10 hà nội,info,P0,seasonal
+mua_thi,cấu trúc đề thi vào 10 tphcm,info,P0,seasonal
+tieng_anh_specific,unit 1 lớp 12 friendship,info,P1,
+tieng_anh_specific,unit 1 lớp 11,info,P1,
+tieng_anh_specific,unit 1 lớp 10,info,P1,
+tieng_anh_specific,giải tiếng anh 9 unit 1,info,P1,
+tieng_anh_specific,giải tiếng anh 8 global success,info,P1,
+tieng_anh_specific,giải tiếng anh 7 i learn smart world,info,P2,
+hoa_specific,giải hóa 12 bài 1 ester,info,P1,
+hoa_specific,giải hóa 12 bài 2 lipit,info,P1,
+hoa_specific,giải hóa 11 chương 1 sự điện li,info,P1,
+hoa_specific,giải hóa 10 chương 1 nguyên tử,info,P1,
+sinh_specific,giải sinh 12 bài 1 gen mã di truyền,info,P1,
+sinh_specific,giải sinh 11 bài 1 sự hấp thụ nước,info,P1,
+ly_specific,giải lý 12 bài 1 dao động điều hòa,info,P1,
+ly_specific,giải lý 11 bài 1 điện tích,info,P1,
+ly_specific,giải lý 10 bài 1 chuyển động cơ,info,P1,

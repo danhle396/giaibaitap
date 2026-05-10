@@ -3,7 +3,7 @@ import type { Grade, Subject, BoSach } from "@/types";
 import { SUBJECT_LABELS, BO_SACH_LABELS, buildBaiGiaiUrl, buildSoanVanUrl, buildDeThiUrl } from "./url";
 
 const SITE_NAME = "Giải Bài Tập";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap.com.vn";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`;
 
 export const SEO_TEMPLATES = {

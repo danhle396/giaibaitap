@@ -39,7 +39,7 @@ export default function GioiThieuPage() {
         </p>
 
         <h2>Liên hệ</h2>
-        <p>Email: <a href="mailto:lienhe@giaibaitap.com.vn">lienhe@giaibaitap.com.vn</a></p>
+        <p>Email: <a href="mailto:lienhe@giaibaitap247.com">lienhe@giaibaitap247.com</a></p>
         <p>Facebook: <a href="https://facebook.com/giaibaitap" target="_blank" rel="noopener noreferrer">facebook.com/giaibaitap</a></p>
       </article>
     </div>

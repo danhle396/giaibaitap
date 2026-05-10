@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap.com.vn";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 const SITE_NAME = "Giải Bài Tập";
 
 interface ArticleSchemaProps {

@@ -18,7 +18,7 @@ export default function ChinhSachBaoMatPage() {
         <p><em>Cập nhật lần cuối: 09/05/2026</em></p>
 
         <p>
-          Chính sách bảo mật này mô tả cách <strong>giaibaitap.com.vn</strong> thu thập, sử dụng và bảo vệ thông tin của bạn khi sử dụng website của chúng tôi, phù hợp với Nghị định 13/2023/NĐ-CP của Chính phủ Việt Nam.
+          Chính sách bảo mật này mô tả cách <strong>giaibaitap247.com</strong> thu thập, sử dụng và bảo vệ thông tin của bạn khi sử dụng website của chúng tôi, phù hợp với Nghị định 13/2023/NĐ-CP của Chính phủ Việt Nam.
         </p>
 
         <h2>1. Thông tin chúng tôi thu thập</h2>
@@ -51,7 +51,7 @@ export default function ChinhSachBaoMatPage() {
         </ul>
 
         <h2>5. Liên hệ</h2>
-        <p>Nếu có câu hỏi về chính sách bảo mật, vui lòng liên hệ: <a href="mailto:lienhe@giaibaitap.com.vn">lienhe@giaibaitap.com.vn</a></p>
+        <p>Nếu có câu hỏi về chính sách bảo mật, vui lòng liên hệ: <a href="mailto:lienhe@giaibaitap247.com">lienhe@giaibaitap247.com</a></p>
       </article>
     </div>
   );

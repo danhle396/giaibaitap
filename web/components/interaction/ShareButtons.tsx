@@ -10,7 +10,7 @@ interface ShareButtonsProps {
 
 export function ShareButtons({ url, title }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
-  const fullUrl = `https://giaibaitap.com.vn${url}`;
+  const fullUrl = `${process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com"}${url}`;
   const encodedUrl = encodeURIComponent(fullUrl);
   const encodedTitle = encodeURIComponent(title);
 

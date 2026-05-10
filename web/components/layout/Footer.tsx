@@ -41,7 +41,7 @@ export function Footer() {
               <a href="https://youtube.com/@giaibaitap" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-400 hover:text-red-400 transition-colors">
                 <ExternalLink className="h-5 w-5" />
               </a>
-              <a href="mailto:lienhe@giaibaitap.com.vn" aria-label="Email" className="text-gray-400 hover:text-green-400 transition-colors">
+              <a href="mailto:lienhe@giaibaitap247.com" aria-label="Email" className="text-gray-400 hover:text-green-400 transition-colors">
                 <Mail className="h-5 w-5" />
               </a>
             </div>
@@ -99,7 +99,7 @@ export function Footer() {
 
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} giaibaitap.com.vn — Tất cả quyền được bảo lưu.
+            © {new Date().getFullYear()} giaibaitap247.com — Tất cả quyền được bảo lưu.
           </p>
           <p className="text-xs text-gray-600">
             Nội dung chỉ mang tính tham khảo, không thay thế sách giáo khoa chính thức.

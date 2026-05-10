@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { GRADES, SUBJECTS_BY_GRADE } from "@/lib/url";
 import type { Grade, Subject } from "@/types";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap.com.vn";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();

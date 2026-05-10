@@ -21,7 +21,7 @@ export default function LienHePage() {
 
       <div className="space-y-4">
         <a
-          href="mailto:lienhe@giaibaitap.com.vn"
+          href="mailto:lienhe@giaibaitap247.com"
           className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-400 transition-colors"
         >
           <div className="p-3 bg-blue-50 dark:bg-blue-950 rounded-lg">
@@ -29,7 +29,7 @@ export default function LienHePage() {
           </div>
           <div>
             <p className="font-semibold text-gray-900 dark:text-white">Email</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">lienhe@giaibaitap.com.vn</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">lienhe@giaibaitap247.com</p>
           </div>
         </a>
 

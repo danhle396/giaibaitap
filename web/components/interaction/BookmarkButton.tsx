@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 
 interface BookmarkButtonProps {
@@ -9,22 +9,21 @@ interface BookmarkButtonProps {
   href: string;
 }
 
-export function BookmarkButton({ id, title, href }: BookmarkButtonProps) {
-  const [saved, setSaved] = useState(false);
+function readBookmarks(): string[] {
+  if (typeof window === "undefined") return [];
+  try {
+    return JSON.parse(localStorage.getItem("bookmarks") || "[]");
+  } catch {
+    return [];
+  }
+}
 
-  useEffect(() => {
-    const bookmarks: string[] = JSON.parse(localStorage.getItem("bookmarks") || "[]");
-    setSaved(bookmarks.includes(id));
-  }, [id]);
+export function BookmarkButton({ id }: BookmarkButtonProps) {
+  const [saved, setSaved] = useState(() => readBookmarks().includes(id));
 
   function toggle() {
-    const bookmarks: string[] = JSON.parse(localStorage.getItem("bookmarks") || "[]");
-    let next: string[];
-    if (saved) {
-      next = bookmarks.filter((b) => b !== id);
-    } else {
-      next = [...bookmarks, id];
-    }
+    const bookmarks = readBookmarks();
+    const next = saved ? bookmarks.filter((b) => b !== id) : [...bookmarks, id];
     localStorage.setItem("bookmarks", JSON.stringify(next));
     setSaved(!saved);
   }

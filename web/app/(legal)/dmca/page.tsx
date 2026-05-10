@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 export const metadata: Metadata = buildMetadata({
   title: "DMCA | Giải Bài Tập",
-  description: "Chính sách DMCA và quy trình khiếu nại bản quyền của giaibaitap.com.vn.",
+  description: "Chính sách DMCA và quy trình khiếu nại bản quyền của giaibaitap247.com.",
   canonical: "/dmca",
 });
 
@@ -18,11 +18,11 @@ export default function DmcaPage() {
         <p><em>Cập nhật lần cuối: 09/05/2026</em></p>
 
         <p>
-          <strong>giaibaitap.com.vn</strong> tôn trọng quyền sở hữu trí tuệ. Nếu bạn cho rằng nội dung trên website vi phạm bản quyền của bạn, vui lòng gửi thông báo DMCA theo hướng dẫn bên dưới.
+          <strong>giaibaitap247.com</strong> tôn trọng quyền sở hữu trí tuệ. Nếu bạn cho rằng nội dung trên website vi phạm bản quyền của bạn, vui lòng gửi thông báo DMCA theo hướng dẫn bên dưới.
         </p>
 
         <h2>Quy trình khiếu nại</h2>
-        <p>Gửi email đến <a href="mailto:lienhe@giaibaitap.com.vn">lienhe@giaibaitap.com.vn</a> với tiêu đề <strong>[DMCA] Khiếu nại bản quyền</strong> và bao gồm:</p>
+        <p>Gửi email đến <a href="mailto:lienhe@giaibaitap247.com">lienhe@giaibaitap247.com</a> với tiêu đề <strong>[DMCA] Khiếu nại bản quyền</strong> và bao gồm:</p>
         <ol>
           <li>Mô tả tác phẩm bị vi phạm bản quyền</li>
           <li>URL cụ thể của nội dung vi phạm trên website</li>

@@ -14,25 +14,29 @@ interface TableOfContentsProps {
   content?: string;
 }
 
-export function TableOfContents({ content }: TableOfContentsProps) {
-  const [items, setItems] = useState<TocItem[]>([]);
+function buildToc(): TocItem[] {
+  if (typeof document === "undefined") return [];
+  const headings = Array.from(
+    document.querySelectorAll(".article-body h2, .article-body h3")
+  ) as HTMLElement[];
+  const toc: TocItem[] = headings.map((el) => ({
+    id:
+      el.id ||
+      el.textContent?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") ||
+      "",
+    text: el.textContent || "",
+    level: el.tagName === "H2" ? 2 : 3,
+  }));
+  headings.forEach((el, i) => {
+    if (!el.id) el.id = toc[i].id;
+  });
+  return toc;
+}
+
+export function TableOfContents({}: TableOfContentsProps) {
+  const [items] = useState<TocItem[]>(buildToc);
   const [activeId, setActiveId] = useState<string>("");
   const [open, setOpen] = useState(true);
-
-  useEffect(() => {
-    const headings = Array.from(
-      document.querySelectorAll(".article-body h2, .article-body h3")
-    ) as HTMLElement[];
-    const toc: TocItem[] = headings.map((el) => ({
-      id: el.id || el.textContent?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") || "",
-      text: el.textContent || "",
-      level: el.tagName === "H2" ? 2 : 3,
-    }));
-    headings.forEach((el, i) => {
-      if (!el.id) el.id = toc[i].id;
-    });
-    setItems(toc);
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,9 +47,9 @@ export function TableOfContents({ content }: TableOfContentsProps) {
       },
       { rootMargin: "0px 0px -70% 0px" }
     );
-    document.querySelectorAll(".article-body h2, .article-body h3").forEach((el) =>
-      observer.observe(el)
-    );
+    document
+      .querySelectorAll(".article-body h2, .article-body h3")
+      .forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [items]);
 

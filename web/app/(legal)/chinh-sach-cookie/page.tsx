@@ -4,7 +4,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 
 export const metadata: Metadata = buildMetadata({
   title: "Chính Sách Cookie | Giải Bài Tập",
-  description: "Tìm hiểu cách giaibaitap.com.vn sử dụng cookie.",
+  description: "Tìm hiểu cách giaibaitap247.com sử dụng cookie.",
   canonical: "/chinh-sach-cookie",
 });
 
@@ -54,7 +54,7 @@ export default function ChinhSachCookiePage() {
         </p>
 
         <h2>Liên hệ</h2>
-        <p><a href="mailto:lienhe@giaibaitap.com.vn">lienhe@giaibaitap.com.vn</a></p>
+        <p><a href="mailto:lienhe@giaibaitap247.com">lienhe@giaibaitap247.com</a></p>
       </article>
     </div>
   );

@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap.com.vn";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 
 export function OrganizationSchema() {
   const schema = {
@@ -13,7 +13,7 @@ export function OrganizationSchema() {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "lienhe@giaibaitap.com.vn",
+      email: "lienhe@giaibaitap247.com",
       contactType: "customer service",
       availableLanguage: "Vietnamese",
     },
