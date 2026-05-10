@@ -1,0 +1,101 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bai_giais",
+  "info": {
+    "singularName": "bai-giai",
+    "pluralName": "bai-giais",
+    "displayName": "Bài giải",
+    "description": "Bài giải SGK, SBT, soạn văn, lý thuyết"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tieu_de": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "tieu_de",
+      "required": true
+    },
+    "lop": {
+      "type": "integer",
+      "min": 1,
+      "max": 12,
+      "required": true
+    },
+    "loai": {
+      "type": "enumeration",
+      "enum": ["giai-sgk", "giai-sbt", "giai-vbt", "soan-van", "ly-thuyet"],
+      "required": true
+    },
+    "bai_so": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "noi_dung": {
+      "type": "richtext",
+      "required": true
+    },
+    "tom_tat": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "meta_title": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "view_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "mon_hoc": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mon-hoc.mon-hoc",
+      "inversedBy": "bai_giais"
+    },
+    "bo_sach": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bo-sach.bo-sach",
+      "inversedBy": "bai_giais"
+    },
+    "chuong": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chuong.chuong",
+      "inversedBy": "bai_giais"
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "bai_giais"
+    },
+    "bai_truoc": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bai-giai.bai-giai"
+    },
+    "bai_sau": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bai-giai.bai-giai"
+    }
+  }
+}

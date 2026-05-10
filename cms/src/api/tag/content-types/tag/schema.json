@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tags",
+  "info": {
+    "singularName": "tag",
+    "pluralName": "tags",
+    "displayName": "Tag",
+    "description": "Tag để gắn nhãn nội dung"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ten": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 50
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "ten",
+      "required": true
+    },
+    "bai_giais": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::bai-giai.bai-giai",
+      "mappedBy": "tags"
+    }
+  }
+}

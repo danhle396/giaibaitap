@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bo_sachs",
+  "info": {
+    "singularName": "bo-sach",
+    "pluralName": "bo-sachs",
+    "displayName": "Bộ sách",
+    "description": "Bộ sách giáo khoa (Kết nối tri thức, Chân trời, Cánh diều, ...)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ten": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 100
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "ten",
+      "required": true
+    },
+    "ma": {
+      "type": "enumeration",
+      "enum": ["ket-noi-tri-thuc", "chan-troi-sang-tao", "canh-dieu", "co-ban"],
+      "required": true,
+      "unique": true
+    },
+    "nha_xuat_ban": {
+      "type": "string"
+    },
+    "thu_tu": {
+      "type": "integer",
+      "default": 0
+    },
+    "bai_giais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bai-giai.bai-giai",
+      "mappedBy": "bo_sach"
+    }
+  }
+}

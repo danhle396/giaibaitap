@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mon_hocs",
+  "info": {
+    "singularName": "mon-hoc",
+    "pluralName": "mon-hocs",
+    "displayName": "Môn học",
+    "description": "Danh mục môn học (Toán, Văn, Anh, ...)"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ten": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "maxLength": 50
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "ten",
+      "required": true
+    },
+    "ma": {
+      "type": "enumeration",
+      "enum": ["toan", "van", "anh", "ly", "hoa", "sinh", "su", "dia", "gdcd", "tin"],
+      "required": true,
+      "unique": true
+    },
+    "thu_tu": {
+      "type": "integer",
+      "default": 0
+    },
+    "icon": {
+      "type": "string"
+    },
+    "bai_giais": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bai-giai.bai-giai",
+      "mappedBy": "mon_hoc"
+    }
+  }
+}

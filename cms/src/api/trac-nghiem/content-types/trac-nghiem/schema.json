@@ -1,0 +1,72 @@
+{
+  "kind": "collectionType",
+  "collectionName": "trac_nghiems",
+  "info": {
+    "singularName": "trac-nghiem",
+    "pluralName": "trac-nghiems",
+    "displayName": "Trắc nghiệm",
+    "description": "Bộ câu hỏi trắc nghiệm online"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tieu_de": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "tieu_de",
+      "required": true
+    },
+    "lop": {
+      "type": "integer",
+      "min": 1,
+      "max": 12,
+      "required": true
+    },
+    "do_kho": {
+      "type": "enumeration",
+      "enum": ["nhan-biet", "thong-hieu", "van-dung", "van-dung-cao"],
+      "default": "thong-hieu"
+    },
+    "thoi_gian": {
+      "type": "integer",
+      "default": 600,
+      "min": 60
+    },
+    "so_cau": {
+      "type": "integer",
+      "default": 0
+    },
+    "cau_hoi": {
+      "type": "json",
+      "required": true
+    },
+    "view_count": {
+      "type": "integer",
+      "default": 0
+    },
+    "meta_title": {
+      "type": "string",
+      "maxLength": 70
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "mon_hoc": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mon-hoc.mon-hoc"
+    },
+    "chuong": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chuong.chuong"
+    }
+  }
+}
