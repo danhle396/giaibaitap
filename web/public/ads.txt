@@ -1,0 +1,2 @@
+# AdSense ads.txt — điền publisher ID sau khi được duyệt
+# Format: google.com, pub-XXXXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
