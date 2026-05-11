@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { marked } from "marked";
+import { renderMarkdown } from "@/lib/markdown";
 import { buildDeThiUrl } from "@/lib/url";
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -46,8 +46,8 @@ export default async function DeThiDetailPage({ params }: Props) {
   if (!d) notFound();
 
   const url = buildDeThiUrl(slug);
-  const deHtml = d.noi_dung_de ? await marked.parse(d.noi_dung_de, { gfm: true }) : "";
-  const dapAnHtml = d.noi_dung_dap_an ? await marked.parse(d.noi_dung_dap_an, { gfm: true }) : "";
+  const deHtml = d.noi_dung_de ? renderMarkdown(d.noi_dung_de) : "";
+  const dapAnHtml = d.noi_dung_dap_an ? renderMarkdown(d.noi_dung_dap_an) : "";
 
   const breadcrumbs = [
     { label: "Đề Thi", href: "/de-thi" },

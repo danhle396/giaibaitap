@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { marked } from "marked";
+import { renderMarkdown } from "@/lib/markdown";
 import { buildSoanVanUrl } from "@/lib/url";
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
@@ -50,7 +50,7 @@ export default async function SoanVanPage({ params }: Props) {
   if (!b || b.loai !== "soan-van") notFound();
 
   const url = buildSoanVanUrl(slug);
-  const noiDungHtml = await marked.parse(b.noi_dung, { gfm: true, breaks: false });
+  const noiDungHtml = renderMarkdown(b.noi_dung);
 
   const breadcrumbs = [
     { label: "Soạn văn", href: "/soan-van" },

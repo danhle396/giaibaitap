@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { marked } from "marked";
+import { renderMarkdown } from "@/lib/markdown";
 import {
   buildBaiGiaiUrl,
   buildLopUrl,
@@ -83,7 +83,7 @@ export default async function BaiGiaiPage({ params }: Props) {
     bo_sach: b.bo_sach.ma,
     slug: b.slug,
   });
-  const noiDungHtml = await marked.parse(b.noi_dung, { gfm: true, breaks: false });
+  const noiDungHtml = renderMarkdown(b.noi_dung);
 
   const breadcrumbs = [
     { label: `Lớp ${b.lop}`, href: buildLopUrl(b.lop) },

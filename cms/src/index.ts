@@ -10,6 +10,36 @@ const PUBLIC_READ_TYPES = [
   "api::trac-nghiem.trac-nghiem",
 ] as const;
 
+async function addIndexes(strapi: Core.Strapi) {
+  const indexes: Array<{ table: string; column: string }> = [
+    { table: "bai_giais", column: "slug" },
+    { table: "bai_giais", column: "lop" },
+    { table: "bai_giais", column: "loai" },
+    { table: "bai_giais", column: "view_count" },
+    { table: "de_this", column: "slug" },
+    { table: "de_this", column: "nam" },
+    { table: "de_this", column: "loai_de" },
+    { table: "trac_nghiems", column: "slug" },
+    { table: "trac_nghiems", column: "lop" },
+    { table: "chuongs", column: "slug" },
+    { table: "chuongs", column: "lop" },
+    { table: "mon_hocs", column: "ma" },
+    { table: "bo_sachs", column: "ma" },
+  ];
+
+  const knex = strapi.db.connection;
+  for (const { table, column } of indexes) {
+    const indexName = `idx_${table}_${column}`;
+    try {
+      await knex.raw(`CREATE INDEX IF NOT EXISTS ${indexName} ON ${table}(${column})`);
+    } catch (err) {
+      // Table may not exist yet on very first boot; safe to ignore
+      strapi.log.debug(`[indexes] skip ${indexName}: ${(err as Error).message}`);
+    }
+  }
+  strapi.log.info(`[indexes] ${indexes.length} indexes ensured`);
+}
+
 async function grantPublicReadPermissions(strapi: Core.Strapi) {
   const publicRole = await strapi
     .query("plugin::users-permissions.role")
@@ -362,6 +392,7 @@ export default {
       await seedSoanVan(strapi);
       await seedDeThi(strapi);
       await seedTracNghiem(strapi);
+      await addIndexes(strapi);
       strapi.log.info("[bootstrap] Bootstrap complete");
     } catch (err) {
       strapi.log.error("[bootstrap] Failed:", err);

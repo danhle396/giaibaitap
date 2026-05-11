@@ -213,6 +213,26 @@ export async function listDeThi(opts: {
   });
 }
 
+export async function listTracNghiem(opts: {
+  lop?: Grade;
+  monMa?: Subject;
+  page?: number;
+  pageSize?: number;
+} = {}): Promise<StrapiList<StrapiTracNghiem>> {
+  const q = buildQuery({
+    "filters[lop][$eq]": opts.lop,
+    "filters[mon_hoc][ma][$eq]": opts.monMa,
+    "populate[mon_hoc]": "true",
+    "sort[0]": "publishedAt:desc",
+    "pagination[page]": opts.page ?? 1,
+    "pagination[pageSize]": opts.pageSize ?? 30,
+  });
+  return strapiFetch<StrapiList<StrapiTracNghiem>>(`/trac-nghiems${q}`, {
+    revalidate: 3600,
+    tags: ["trac-nghiem-list"],
+  });
+}
+
 export async function getTracNghiemBySlug(slug: string): Promise<StrapiTracNghiem | null> {
   const q = buildQuery({
     "filters[slug][$eq]": slug,
