@@ -30,12 +30,14 @@ interface Props {
 export async function generateStaticParams() {
   try {
     const items = await listBaiGiaiSlugs();
-    return items.map((b) => ({
-      grade: String(b.lop),
-      subject: b.mon,
-      type: `${b.loai}-${b.mon}-lop-${b.lop}-${b.bo_sach}`,
-      slug: b.slug,
-    }));
+    return items
+      .filter((b) => b.loai !== "soan-van")
+      .map((b) => ({
+        grade: String(b.lop),
+        subject: b.mon,
+        type: `${b.loai}-${b.mon}-lop-${b.lop}-${b.bo_sach}`,
+        slug: b.slug,
+      }));
   } catch {
     return [];
   }
@@ -69,6 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BaiGiaiPage({ params }: Props) {
   const { grade, subject, type, slug } = await params;
+  const g = parseInt(grade);
+  if (isNaN(g) || g < 1 || g > 12) notFound();
   const b = await getBaiGiaiBySlug(slug).catch(() => null);
   if (!b || !b.mon_hoc || !b.bo_sach) notFound();
 

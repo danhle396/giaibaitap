@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { BookOpen, FileText, PenTool, Star, ArrowRight } from "lucide-react";
-import { buildLopUrl, buildMonUrl, GRADES, SUBJECT_LABELS } from "@/lib/url";
+import { BookOpen, FileText, PenTool, Star, ArrowRight, Clock } from "lucide-react";
+import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, GRADES, SUBJECT_LABELS } from "@/lib/url";
+import { listRecentBaiGiai } from "@/lib/strapi";
+import { formatDate } from "@/lib/utils";
 import type { Grade, Subject } from "@/types";
+
+export const revalidate = 600;
 
 const HOT_LINKS = [
   { label: "Giải SGK Toán 12", href: "/lop-12/toan", badge: "HOT" },
@@ -25,7 +29,9 @@ const POPULAR_GRADES: Array<{ grade: Grade; subs: Subject[] }> = [
   { grade: 9, subs: ["toan", "van", "anh"] },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const recent = await listRecentBaiGiai(8).catch(() => []);
+
   return (
     <div>
       {/* Hero */}
@@ -74,6 +80,47 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        {/* Bài mới */}
+        {recent.length > 0 && (
+          <section>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <Clock className="h-5 w-5 text-blue-600" />
+                Bài mới cập nhật
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {recent.map((b) => {
+                if (!b.mon_hoc || !b.bo_sach) return null;
+                const href = buildBaiGiaiUrl({
+                  lop: b.lop,
+                  mon: b.mon_hoc.ma,
+                  loai: b.loai,
+                  bo_sach: b.bo_sach.ma,
+                  slug: b.slug,
+                });
+                return (
+                  <Link
+                    key={b.id}
+                    href={href}
+                    className="block p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-400 hover:shadow-md transition-all"
+                  >
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium mb-1.5">
+                      {SUBJECT_LABELS[b.mon_hoc.ma]} • Lớp {b.lop}
+                    </p>
+                    <h3 className="font-semibold text-gray-900 dark:text-white text-sm line-clamp-2 mb-2">
+                      {b.tieu_de}
+                    </h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      {formatDate(b.publishedAt)}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* Chọn lớp */}
         <section>

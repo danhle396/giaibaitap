@@ -1,11 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, SUBJECT_LABELS, BO_SACH_LABELS } from "@/lib/url";
+import { notFound } from "next/navigation";
+import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, SUBJECT_LABELS } from "@/lib/url";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { MOCK_BAIS_CUNG_CHUONG } from "@/lib/mock-data";
 import type { Grade, Subject } from "@/types";
+
+export const revalidate = 3600;
 
 interface Props {
   params: Promise<{ grade: string; subject: string; type: string }>;
@@ -22,7 +25,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { grade, subject, type } = await params;
-  const g = parseInt(grade) as Grade;
+  const g = parseInt(grade);
+  if (isNaN(g) || g < 1 || g > 12) {
+    return buildMetadata({ title: "Không tìm thấy", description: "", canonical: "/", noIndex: true });
+  }
   const label = type.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
   return buildMetadata({
     title: `${label} - ${SUBJECT_LABELS[subject as Subject]} Lớp ${g}`,
@@ -33,12 +39,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function TypePage({ params }: Props) {
   const { grade, subject, type } = await params;
-  const g = parseInt(grade) as Grade;
+  const g = parseInt(grade);
+  if (isNaN(g) || g < 1 || g > 12) notFound();
+  const gTyped = g as Grade;
   const sub = subject as Subject;
 
   const breadcrumbs = [
-    { label: `Lớp ${g}`, href: buildLopUrl(g) },
-    { label: SUBJECT_LABELS[sub], href: buildMonUrl(g, sub) },
+    { label: `Lớp ${gTyped}`, href: buildLopUrl(gTyped) },
+    { label: SUBJECT_LABELS[sub], href: buildMonUrl(gTyped, sub) },
     { label: type.replace(/-/g, " ").replace("lop", "lớp"), href: `/lop-${grade}/${subject}/${type}` },
   ];
 

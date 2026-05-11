@@ -155,6 +155,202 @@ Xét tính đơn điệu của hàm số $f(x) = x^3 - 3x^2 + 2$.
   }
 }
 
+async function seedSoanVan(strapi: Core.Strapi) {
+  const van = await strapi
+    .documents("api::mon-hoc.mon-hoc")
+    .findFirst({ filters: { ma: "van" } });
+  const kntt = await strapi
+    .documents("api::bo-sach.bo-sach")
+    .findFirst({ filters: { ma: "ket-noi-tri-thuc" } });
+  if (!van || !kntt) return;
+
+  const slug = "soan-bai-chi-pheo";
+  const exists = await strapi
+    .documents("api::bai-giai.bai-giai")
+    .findFirst({ filters: { slug }, status: "published" });
+  if (exists) return;
+
+  const bai = await strapi.documents("api::bai-giai.bai-giai").create({
+    data: {
+      tieu_de: "Soạn bài Chí Phèo - Nam Cao",
+      slug,
+      lop: 11,
+      loai: "soan-van" as const,
+      tom_tat:
+        "Soạn bài Chí Phèo của Nam Cao - Ngữ Văn 11. Tóm tắt cốt truyện, phân tích nhân vật, ý nghĩa nhan đề và giá trị nội dung - nghệ thuật.",
+      noi_dung: `## Tác giả - Tác phẩm
+
+### Tác giả Nam Cao
+- Sinh năm 1917 tại Hà Nam, là một trong những nhà văn hiện thực xuất sắc nhất của văn học Việt Nam thế kỷ XX.
+- Phong cách: lối viết lạnh lùng, sắc sảo, đào sâu vào tâm lý nhân vật.
+
+### Tác phẩm Chí Phèo
+- **Hoàn cảnh sáng tác:** 1941, in trong tập "Luống cày"
+- **Thể loại:** Truyện ngắn hiện thực phê phán
+- **Tóm tắt:** Chí Phèo - một thanh niên nông dân lương thiện bị xã hội thực dân nửa phong kiến đẩy vào con đường tha hoá, trở thành con quỷ dữ của làng Vũ Đại.
+
+## Soạn bài chi tiết
+
+### Câu 1: Phân tích hình tượng nhân vật Chí Phèo
+
+Chí Phèo là nạn nhân điển hình của xã hội thực dân nửa phong kiến. Từ một thanh niên nông dân lương thiện, Chí bị Bá Kiến đẩy vào tù, ra tù trở thành con quỷ dữ. Hành trình tha hoá của Chí cho thấy bản chất tàn bạo của xã hội cũ.
+
+### Câu 2: Ý nghĩa cuộc gặp gỡ với Thị Nở
+
+Cuộc gặp gỡ với Thị Nở đánh thức bản chất người trong Chí Phèo. Bát cháo hành là biểu tượng tình thương đầu tiên Chí nhận được sau bao năm. Tuy ngắn ngủi nhưng nó cho thấy khát vọng làm người lương thiện vẫn còn sống trong Chí.
+
+## Phân tích nhân vật chính
+
+Chí Phèo là hình tượng điển hình của người nông dân bị bần cùng hoá, lưu manh hoá trong xã hội cũ. Cái chết của Chí không chỉ là bi kịch cá nhân mà còn là tiếng kêu cứu của cả một tầng lớp.
+
+## Ý nghĩa nhan đề
+
+Tên "Chí Phèo" gợi lên hình ảnh con người bị xã hội biến chất. Đây không phải tên khai sinh mà là biệt danh, thể hiện quá trình đánh mất bản thân của nhân vật.`,
+      meta_title: "Soạn bài Chí Phèo - Ngữ Văn 11 đầy đủ | Giải Bài Tập",
+      meta_description:
+        "Soạn bài Chí Phèo - Nam Cao - Ngữ Văn 11. Tóm tắt, phân tích nhân vật, ý nghĩa nhan đề, giá trị nội dung và nghệ thuật.",
+      view_count: 0,
+      mon_hoc: van.documentId,
+      bo_sach: kntt.documentId,
+    },
+  });
+  await strapi.documents("api::bai-giai.bai-giai").publish({ documentId: bai.documentId });
+  strapi.log.info(`[seed] soan-van: ${bai.tieu_de}`);
+}
+
+async function seedDeThi(strapi: Core.Strapi) {
+  const toan = await strapi
+    .documents("api::mon-hoc.mon-hoc")
+    .findFirst({ filters: { ma: "toan" } });
+  if (!toan) return;
+
+  const slug = "de-thi-tot-nghiep-thpt-2025-mon-toan-de-101";
+  const exists = await strapi
+    .documents("api::de-thi.de-thi")
+    .findFirst({ filters: { slug }, status: "published" });
+  if (exists) return;
+
+  const de = await strapi.documents("api::de-thi.de-thi").create({
+    data: {
+      tieu_de: "Đề thi tốt nghiệp THPT 2025 môn Toán - Mã đề 101",
+      slug,
+      loai_de: "tot-nghiep-thpt" as const,
+      nam: 2025,
+      lop: 12,
+      tinh_thanh: null,
+      thoi_gian_lam_bai: 90,
+      noi_dung_de: `## Đề thi tốt nghiệp THPT 2025 - Môn Toán - Mã đề 101
+
+**Thời gian làm bài:** 90 phút (không kể thời gian phát đề)
+
+### Phần I. Câu hỏi trắc nghiệm
+
+**Câu 1.** Tập xác định của hàm số $y = \\sqrt{x-2}$ là:
+
+A. $(2; +\\infty)$
+B. $[2; +\\infty)$
+C. $(-\\infty; 2]$
+D. $\\mathbb{R} \\setminus \\{2\\}$
+
+**Câu 2.** Cho hàm số $y = x^3 - 3x$. Số điểm cực trị của hàm số là:
+
+A. 0
+B. 1
+C. 2
+D. 3`,
+      noi_dung_dap_an: `## Đáp án chi tiết
+
+### Bảng đáp án
+
+| Câu | 1 | 2 |
+|---|---|---|
+| Đáp án | B | C |
+
+### Lời giải chi tiết
+
+**Câu 1.** Đáp án **B**
+
+Hàm số xác định khi $x - 2 \\geq 0 \\Leftrightarrow x \\geq 2$. Vậy tập xác định là $[2; +\\infty)$.
+
+**Câu 2.** Đáp án **C**
+
+$y' = 3x^2 - 3 = 3(x-1)(x+1) = 0 \\Leftrightarrow x = \\pm 1$. Hàm số có 2 điểm cực trị.`,
+      meta_title: "Đề thi TN THPT 2025 môn Toán Mã 101 (có đáp án) | Giải Bài Tập",
+      meta_description:
+        "Đề thi tốt nghiệp THPT năm 2025 môn Toán mã đề 101 kèm đáp án chi tiết. Tải PDF, xem online, chuẩn bị thi tốt.",
+      view_count: 0,
+      mon_hoc: toan.documentId,
+    },
+  });
+  await strapi.documents("api::de-thi.de-thi").publish({ documentId: de.documentId });
+  strapi.log.info(`[seed] de-thi: ${de.tieu_de}`);
+}
+
+async function seedTracNghiem(strapi: Core.Strapi) {
+  const toan = await strapi
+    .documents("api::mon-hoc.mon-hoc")
+    .findFirst({ filters: { ma: "toan" } });
+  const chuong = await strapi
+    .documents("api::chuong.chuong")
+    .findFirst({ filters: { slug: "chuong-1-ung-dung-dao-ham-khao-sat-ham-so" } });
+  if (!toan) return;
+
+  const slug = "trac-nghiem-toan-12-tinh-don-dieu-cua-ham-so";
+  const exists = await strapi
+    .documents("api::trac-nghiem.trac-nghiem")
+    .findFirst({ filters: { slug }, status: "published" });
+  if (exists) return;
+
+  const cauHoi = [
+    {
+      cau_hoi: "Cho hàm số $y = x^3 - 3x^2 + 2$. Hàm số đồng biến trên khoảng nào sau đây?",
+      dap_an: ["$(-\\infty; 0)$", "$(0; 2)$", "$(2; +\\infty)$", "$(-1; 1)$"],
+      dap_an_dung: 2,
+      giai_thich:
+        "$y' = 3x^2 - 6x = 3x(x-2)$. $y' > 0$ khi $x < 0$ hoặc $x > 2$. Vậy hàm số đồng biến trên $(2; +\\infty)$.",
+    },
+    {
+      cau_hoi: "Hàm số nào sau đây nghịch biến trên $\\mathbb{R}$?",
+      dap_an: ["$y = x^3$", "$y = -x^3 + x$", "$y = -x^3 - 3x$", "$y = x^2 + 1$"],
+      dap_an_dung: 2,
+      giai_thich:
+        "Xét $y = -x^3 - 3x \\Rightarrow y' = -3x^2 - 3 < 0 \\forall x \\Rightarrow$ nghịch biến trên $\\mathbb{R}$.",
+    },
+    {
+      cau_hoi: "Hàm số $y = \\dfrac{x+1}{x-1}$ đồng biến trên các khoảng:",
+      dap_an: [
+        "$(-\\infty; 1)$ và $(1; +\\infty)$",
+        "Không có khoảng đồng biến",
+        "$(-\\infty; 1) \\cup (1; +\\infty)$",
+        "$(-\\infty; -1)$ và $(-1; +\\infty)$",
+      ],
+      dap_an_dung: 1,
+      giai_thich:
+        "$y' = \\dfrac{-2}{(x-1)^2} < 0 \\forall x \\neq 1$. Hàm số nghịch biến trên từng khoảng xác định, không có khoảng đồng biến.",
+    },
+  ];
+
+  const tn = await strapi.documents("api::trac-nghiem.trac-nghiem").create({
+    data: {
+      tieu_de: "Trắc nghiệm Toán 12 - Tính đơn điệu của hàm số (3 câu)",
+      slug,
+      lop: 12,
+      do_kho: "thong-hieu" as const,
+      thoi_gian: 600,
+      so_cau: cauHoi.length,
+      cau_hoi: cauHoi,
+      meta_title: "Trắc nghiệm Tính đơn điệu hàm số - Toán 12 | Giải Bài Tập",
+      meta_description:
+        "Bộ câu trắc nghiệm Tính đơn điệu của hàm số - Toán 12 có đáp án và lời giải chi tiết. Làm online, chấm điểm tức thì.",
+      view_count: 0,
+      mon_hoc: toan.documentId,
+      ...(chuong ? { chuong: chuong.documentId } : {}),
+    },
+  });
+  await strapi.documents("api::trac-nghiem.trac-nghiem").publish({ documentId: tn.documentId });
+  strapi.log.info(`[seed] trac-nghiem: ${tn.tieu_de}`);
+}
+
 export default {
   register() {},
 
@@ -163,6 +359,9 @@ export default {
       await grantPublicReadPermissions(strapi);
       await seedLookups(strapi);
       await seedSampleContent(strapi);
+      await seedSoanVan(strapi);
+      await seedDeThi(strapi);
+      await seedTracNghiem(strapi);
       strapi.log.info("[bootstrap] Bootstrap complete");
     } catch (err) {
       strapi.log.error("[bootstrap] Failed:", err);

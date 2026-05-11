@@ -75,6 +75,8 @@ export interface StrapiTracNghiem {
   so_cau: number;
   cau_hoi: StrapiTracNghiemQuestion[];
   view_count: number;
+  meta_title: string | null;
+  meta_description: string | null;
   publishedAt: string;
   mon_hoc?: { ma: Subject; ten: string };
 }
@@ -223,6 +225,20 @@ export async function getTracNghiemBySlug(slug: string): Promise<StrapiTracNghie
     tags: [`trac-nghiem-${slug}`],
   });
   return json.data[0] || null;
+}
+
+export async function listRecentBaiGiai(limit = 8): Promise<StrapiBaiGiai[]> {
+  const q = buildQuery({
+    "populate[mon_hoc]": "true",
+    "populate[bo_sach]": "true",
+    "sort[0]": "publishedAt:desc",
+    "pagination[pageSize]": limit,
+  });
+  const json = await strapiFetch<StrapiList<StrapiBaiGiai>>(`/bai-giais${q}`, {
+    revalidate: 600,
+    tags: ["bai-giai-recent"],
+  });
+  return json.data;
 }
 
 export async function searchBaiGiai(query: string, limit = 10): Promise<StrapiBaiGiai[]> {

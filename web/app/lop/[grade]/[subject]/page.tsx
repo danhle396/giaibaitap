@@ -1,11 +1,14 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, SUBJECT_LABELS, BO_SACH_LABELS } from "@/lib/url";
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
-import { MOCK_BAIS_CUNG_CHUONG, MOCK_BAI_GIAI } from "@/lib/mock-data";
+import { MOCK_BAIS_CUNG_CHUONG } from "@/lib/mock-data";
 import type { Grade, Subject, BoSach } from "@/types";
+
+export const revalidate = 3600;
 
 interface Props {
   params: Promise<{ grade: string; subject: string }>;
@@ -19,10 +22,13 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { grade, subject } = await params;
-  const g = parseInt(grade) as Grade;
+  const g = parseInt(grade);
+  if (isNaN(g) || g < 1 || g > 12) {
+    return buildMetadata({ title: "Không tìm thấy", description: "", canonical: "/", noIndex: true });
+  }
   return buildMetadata({
-    title: SEO_TEMPLATES.mon.title(g, subject as Subject),
-    description: SEO_TEMPLATES.mon.description(g, subject as Subject),
+    title: SEO_TEMPLATES.mon.title(g as Grade, subject as Subject),
+    description: SEO_TEMPLATES.mon.description(g as Grade, subject as Subject),
     canonical: `/lop-${grade}/${subject}`,
   });
 }
@@ -37,13 +43,14 @@ const MOCK_CHAPTERS = [
 
 export default async function MonPage({ params }: Props) {
   const { grade, subject } = await params;
-  const g = parseInt(grade) as Grade;
+  const g = parseInt(grade);
+  if (isNaN(g) || g < 1 || g > 12) notFound();
+  const gTyped = g as Grade;
   const sub = subject as Subject;
-  const [activeBoSach, setActive] = [BO_SACHS[0], null];
 
   const breadcrumbs = [
-    { label: `Lớp ${g}`, href: buildLopUrl(g) },
-    { label: SUBJECT_LABELS[sub], href: buildMonUrl(g, sub) },
+    { label: `Lớp ${gTyped}`, href: buildLopUrl(gTyped) },
+    { label: SUBJECT_LABELS[sub], href: buildMonUrl(gTyped, sub) },
   ];
 
   return (
@@ -52,13 +59,12 @@ export default async function MonPage({ params }: Props) {
       <Breadcrumb items={breadcrumbs} />
 
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-4 mb-2">
-        Giải {SUBJECT_LABELS[sub]} Lớp {g}
+        Giải {SUBJECT_LABELS[sub]} Lớp {gTyped}
       </h1>
       <p className="text-gray-600 dark:text-gray-300 mb-6">
-        Lời giải {SUBJECT_LABELS[sub]} lớp {g} đầy đủ, chi tiết. Bao gồm tất cả bộ sách: Kết nối tri thức, Chân trời sáng tạo, Cánh Diều.
+        Lời giải {SUBJECT_LABELS[sub]} lớp {gTyped} đầy đủ, chi tiết. Bao gồm tất cả bộ sách: Kết nối tri thức, Chân trời sáng tạo, Cánh Diều.
       </p>
 
-      {/* Bộ sách tabs */}
       <div className="flex gap-2 mb-8 flex-wrap">
         {BO_SACHS.map((bs) => (
           <Link
@@ -71,7 +77,6 @@ export default async function MonPage({ params }: Props) {
         ))}
       </div>
 
-      {/* Chapters listing */}
       <div className="space-y-6">
         {MOCK_CHAPTERS.map((ch) => (
           <div key={ch.id} className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">

@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         source: "/lop-:grade(\\d+)",
         destination: "/lop/:grade",
       },
+      {
+        source: "/lop-:grade(\\d+)/:path*",
+        destination: "/lop/:grade/:path*",
+      },
     ];
   },
   async headers() {
