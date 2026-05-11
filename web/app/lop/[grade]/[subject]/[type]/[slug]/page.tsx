@@ -13,6 +13,7 @@ import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { ArticleSchema } from "@/components/seo/ArticleSchema";
 import { TableOfContents } from "@/components/article/TableOfContents";
+import { PrevNextNav } from "@/components/article/PrevNextNav";
 import { ShareButtons } from "@/components/interaction/ShareButtons";
 import { BookmarkButton } from "@/components/interaction/BookmarkButton";
 import { InArticleAd } from "@/components/ads/InArticleAd";
@@ -84,31 +85,34 @@ export default async function BaiGiaiPage({ params }: Props) {
   });
   const noiDungHtml = renderMarkdown(b.noi_dung);
 
-  const related = b.chuong
+  const chuongList = b.chuong
     ? await listBaiGiaiByMon({
         lop: b.lop,
         monMa: b.mon_hoc.ma,
         boSachMa: b.bo_sach.ma,
         chuongSlug: b.chuong.slug,
-        pageSize: 8,
+        pageSize: 50,
       })
-        .then((r) =>
-          r.data
-            .filter((x) => x.slug !== b.slug && x.mon_hoc && x.bo_sach)
-            .map((x) => ({
-              id: x.id,
-              tieu_de: x.tieu_de,
-              href: buildBaiGiaiUrl({
-                lop: x.lop,
-                mon: x.mon_hoc!.ma,
-                loai: x.loai,
-                bo_sach: x.bo_sach!.ma,
-                slug: x.slug,
-              }),
-            })),
-        )
+        .then((r) => r.data.filter((x) => x.mon_hoc && x.bo_sach))
         .catch(() => [])
     : [];
+
+  const buildHref = (x: (typeof chuongList)[number]) =>
+    buildBaiGiaiUrl({
+      lop: x.lop,
+      mon: x.mon_hoc!.ma,
+      loai: x.loai,
+      bo_sach: x.bo_sach!.ma,
+      slug: x.slug,
+    });
+
+  const currentIdx = chuongList.findIndex((x) => x.slug === b.slug);
+  const prev = currentIdx > 0 ? chuongList[currentIdx - 1] : null;
+  const next = currentIdx >= 0 && currentIdx < chuongList.length - 1 ? chuongList[currentIdx + 1] : null;
+  const related = chuongList
+    .filter((x) => x.slug !== b.slug)
+    .slice(0, 8)
+    .map((x) => ({ id: x.id, tieu_de: x.tieu_de, href: buildHref(x) }));
 
   const breadcrumbs = [
     { label: `Lớp ${b.lop}`, href: buildLopUrl(b.lop) },
@@ -162,6 +166,13 @@ export default async function BaiGiaiPage({ params }: Props) {
             />
 
             <InArticleAd slot="1234567890" />
+
+            <PrevNextNav
+              prev={prev ? { title: prev.tieu_de, href: buildHref(prev) } : undefined}
+              next={next ? { title: next.tieu_de, href: buildHref(next) } : undefined}
+              listHref={`/lop-${grade}/${subject}/${type}`}
+              listLabel="Danh sách bài"
+            />
           </article>
         </div>
 
