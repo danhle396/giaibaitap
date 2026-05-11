@@ -128,11 +128,43 @@ export async function getBaiGiaiBySlug(slug: string): Promise<StrapiBaiGiai | nu
   return json.data[0] || null;
 }
 
+export interface StrapiChuong {
+  id: number;
+  documentId: string;
+  ten: string;
+  slug: string;
+  thu_tu: number;
+  lop: Grade;
+  mo_ta: string | null;
+  mon_hoc?: { ma: Subject; ten: string };
+  bo_sach?: { ma: BoSach; ten: string };
+}
+
+export async function listChuongByMon(opts: {
+  lop: Grade;
+  monMa: Subject;
+  boSachMa?: BoSach;
+}): Promise<StrapiChuong[]> {
+  const q = buildQuery({
+    "filters[lop][$eq]": opts.lop,
+    "filters[mon_hoc][ma][$eq]": opts.monMa,
+    "filters[bo_sach][ma][$eq]": opts.boSachMa,
+    "sort[0]": "thu_tu:asc",
+    "pagination[pageSize]": 100,
+  });
+  const json = await strapiFetch<StrapiList<StrapiChuong>>(`/chuongs${q}`, {
+    revalidate: 3600,
+    tags: [`chuong-${opts.lop}-${opts.monMa}`],
+  });
+  return json.data;
+}
+
 export async function listBaiGiaiByMon(opts: {
   lop: Grade;
   monMa: Subject;
   loai?: BaiGiaiLoai;
   boSachMa?: BoSach;
+  chuongSlug?: string;
   page?: number;
   pageSize?: number;
 }): Promise<StrapiList<StrapiBaiGiai>> {
@@ -141,9 +173,11 @@ export async function listBaiGiaiByMon(opts: {
     "filters[mon_hoc][ma][$eq]": opts.monMa,
     "filters[loai][$eq]": opts.loai,
     "filters[bo_sach][ma][$eq]": opts.boSachMa,
+    "filters[chuong][slug][$eq]": opts.chuongSlug,
     "populate[chuong]": "true",
-    "sort[0]": "chuong.thu_tu:asc",
-    "sort[1]": "bai_so:asc",
+    "populate[mon_hoc]": "true",
+    "populate[bo_sach]": "true",
+    "sort[0]": "bai_so:asc",
     "pagination[page]": opts.page ?? 1,
     "pagination[pageSize]": opts.pageSize ?? 50,
   });

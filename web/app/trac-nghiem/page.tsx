@@ -1,9 +1,10 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
-import { buildTracNghiemUrl, SUBJECT_LABELS } from "@/lib/url";
+import { buildTracNghiemUrl, SUBJECT_LABELS, GRADES } from "@/lib/url";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { listTracNghiem } from "@/lib/strapi";
+import type { Grade } from "@/types";
 import { Star } from "lucide-react";
 
 export const revalidate = 3600;
@@ -22,8 +23,19 @@ const DO_KHO_LABELS: Record<string, string> = {
   "van-dung-cao": "Vận dụng cao",
 };
 
-export default async function TracNghiemPage() {
-  const list = await listTracNghiem({ pageSize: 100 }).catch(() => ({ data: [] }));
+interface Props {
+  searchParams: Promise<{ lop?: string }>;
+}
+
+export default async function TracNghiemPage({ searchParams }: Props) {
+  const sp = await searchParams;
+  const lopParsed = sp.lop ? parseInt(sp.lop, 10) : NaN;
+  const activeLop: Grade | undefined =
+    !isNaN(lopParsed) && lopParsed >= 1 && lopParsed <= 12 ? (lopParsed as Grade) : undefined;
+
+  const list = await listTracNghiem({ lop: activeLop, pageSize: 100 }).catch(() => ({
+    data: [],
+  }));
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
@@ -32,13 +44,41 @@ export default async function TracNghiemPage() {
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-4 mb-2">
         Trắc Nghiệm Online
       </h1>
-      <p className="text-gray-600 dark:text-gray-300 mb-8">
+      <p className="text-gray-600 dark:text-gray-300 mb-6">
         Luyện trắc nghiệm theo chương, có giải thích đáp án chi tiết.
       </p>
 
+      <div className="flex gap-2 flex-wrap mb-6">
+        <Link
+          href="/trac-nghiem"
+          className={
+            "px-3 py-1.5 text-xs rounded-full border font-medium transition-colors " +
+            (activeLop === undefined
+              ? "bg-blue-600 text-white border-blue-600"
+              : "border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-blue-400")
+          }
+        >
+          Tất cả lớp
+        </Link>
+        {GRADES.map((g) => (
+          <Link
+            key={g}
+            href={`/trac-nghiem?lop=${g}`}
+            className={
+              "px-3 py-1.5 text-xs rounded-full border font-medium transition-colors " +
+              (g === activeLop
+                ? "bg-blue-600 text-white border-blue-600"
+                : "border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:border-blue-400")
+            }
+          >
+            Lớp {g}
+          </Link>
+        ))}
+      </div>
+
       {list.data.length === 0 ? (
         <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-xl p-6 text-sm text-yellow-800 dark:text-yellow-300">
-          Chưa có bộ trắc nghiệm nào. Quay lại sau nhé.
+          Chưa có bộ trắc nghiệm nào{activeLop ? ` cho lớp ${activeLop}` : ""}.
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

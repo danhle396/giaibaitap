@@ -4,11 +4,34 @@
 
 Bulk import Markdown files into Strapi as `bai-giai` entries.
 
+### Setup (one-time)
+
+1. **Start Strapi**: `cd cms && pnpm develop`
+2. **Create admin user**: open http://localhost:1337/admin and register
+3. **Generate API token**:
+   - Settings → API Tokens → "Create new API Token"
+   - Name: `bulk-import` (any)
+   - Token type: **Full access**
+   - Token duration: Unlimited (or any)
+   - Click Save → **copy the token shown** (it appears only once!)
+4. **Save token to env**: add to your shell or `.env.local`:
+   ```bash
+   export STRAPI_API_TOKEN=<paste-token-here>
+   ```
+
+> **Note:** Strapi v5 doesn't expose the `admin::api-token` service during
+> bootstrap, so we can't auto-generate this. The bootstrap logs a warning
+> and skips the auto-token; manual creation above is required.
+
 ### Usage
 
 ```bash
-# 1. Get a Strapi API token (Settings → API Tokens → Create new, type: Full access)
-# 2. Run from project root:
+# From project root, with STRAPI_API_TOKEN exported:
+npx tsx scripts/bulk-import.ts ./content-templates/inbox/
+```
+
+Or inline:
+```bash
 STRAPI_URL=http://localhost:1337 \
 STRAPI_API_TOKEN=xxx \
 npx tsx scripts/bulk-import.ts ./content-templates/inbox/

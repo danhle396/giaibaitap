@@ -17,9 +17,8 @@ import { ShareButtons } from "@/components/interaction/ShareButtons";
 import { BookmarkButton } from "@/components/interaction/BookmarkButton";
 import { InArticleAd } from "@/components/ads/InArticleAd";
 import { Sidebar } from "@/components/layout/Sidebar";
-import { MOCK_BAIS_CUNG_CHUONG } from "@/lib/mock-data";
 import { formatDate } from "@/lib/utils";
-import { getBaiGiaiBySlug, listBaiGiaiSlugs } from "@/lib/strapi";
+import { getBaiGiaiBySlug, listBaiGiaiByMon, listBaiGiaiSlugs } from "@/lib/strapi";
 
 export const revalidate = 3600;
 
@@ -85,6 +84,32 @@ export default async function BaiGiaiPage({ params }: Props) {
   });
   const noiDungHtml = renderMarkdown(b.noi_dung);
 
+  const related = b.chuong
+    ? await listBaiGiaiByMon({
+        lop: b.lop,
+        monMa: b.mon_hoc.ma,
+        boSachMa: b.bo_sach.ma,
+        chuongSlug: b.chuong.slug,
+        pageSize: 8,
+      })
+        .then((r) =>
+          r.data
+            .filter((x) => x.slug !== b.slug && x.mon_hoc && x.bo_sach)
+            .map((x) => ({
+              id: x.id,
+              tieu_de: x.tieu_de,
+              href: buildBaiGiaiUrl({
+                lop: x.lop,
+                mon: x.mon_hoc!.ma,
+                loai: x.loai,
+                bo_sach: x.bo_sach!.ma,
+                slug: x.slug,
+              }),
+            })),
+        )
+        .catch(() => [])
+    : [];
+
   const breadcrumbs = [
     { label: `Lớp ${b.lop}`, href: buildLopUrl(b.lop) },
     { label: SUBJECT_LABELS[b.mon_hoc.ma], href: buildMonUrl(b.lop, b.mon_hoc.ma) },
@@ -142,7 +167,7 @@ export default async function BaiGiaiPage({ params }: Props) {
 
         <div className="hidden lg:block w-72 shrink-0">
           <div className="sticky top-20">
-            <Sidebar relatedPosts={MOCK_BAIS_CUNG_CHUONG} adSlot="sidebar" />
+            <Sidebar relatedPosts={related} adSlot="sidebar" />
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import type { Core } from "@strapi/strapi";
+import { writeFile, mkdir } from "node:fs/promises";
+import { dirname } from "node:path";
 
 const PUBLIC_READ_TYPES = [
   "api::mon-hoc.mon-hoc",
@@ -9,6 +11,55 @@ const PUBLIC_READ_TYPES = [
   "api::de-thi.de-thi",
   "api::trac-nghiem.trac-nghiem",
 ] as const;
+
+async function ensureDevApiToken(strapi: Core.Strapi) {
+  const tokenName = "dev-bulk-import";
+  // Strapi v5 admin api-token service
+  const tokenService =
+    strapi.service("admin::api-token") ||
+    (strapi as unknown as { admin: { services: { "api-token": unknown } } }).admin?.services?.["api-token"];
+
+  if (!tokenService) {
+    strapi.log.info(
+      "[bootstrap] api-token auto-gen skipped (Strapi v5 service not available during bootstrap). To use scripts/bulk-import.ts, create a token manually at http://localhost:1337/admin → Settings → API Tokens. See scripts/README.md.",
+    );
+    return;
+  }
+
+  type TokenSvc = {
+    list: () => Promise<Array<{ name: string }>>;
+    create: (data: { name: string; description: string; type: string; lifespan: number | null }) => Promise<{ accessKey: string }>;
+  };
+  const svc = tokenService as TokenSvc;
+
+  let existing: Array<{ name: string }>;
+  try {
+    existing = await svc.list();
+  } catch (err) {
+    strapi.log.warn(`[bootstrap] api-token list failed: ${(err as Error).message}`);
+    return;
+  }
+
+  if (existing.some((t) => t.name === tokenName)) {
+    strapi.log.info(`[bootstrap] API token "${tokenName}" already exists`);
+    return;
+  }
+
+  try {
+    const created = await svc.create({
+      name: tokenName,
+      description: "Auto-generated for bulk-import script (dev only)",
+      type: "full-access",
+      lifespan: null,
+    });
+    const tokenPath = `${strapi.dirs.app.root}/.tmp/api-token.txt`;
+    await mkdir(dirname(tokenPath), { recursive: true });
+    await writeFile(tokenPath, created.accessKey, "utf8");
+    strapi.log.info(`[bootstrap] API token "${tokenName}" created → ${tokenPath}`);
+  } catch (err) {
+    strapi.log.warn(`[bootstrap] api-token create failed: ${(err as Error).message}`);
+  }
+}
 
 async function addIndexes(strapi: Core.Strapi) {
   const indexes: Array<{ table: string; column: string }> = [
@@ -393,6 +444,7 @@ export default {
       await seedDeThi(strapi);
       await seedTracNghiem(strapi);
       await addIndexes(strapi);
+      await ensureDevApiToken(strapi);
       strapi.log.info("[bootstrap] Bootstrap complete");
     } catch (err) {
       strapi.log.error("[bootstrap] Failed:", err);
