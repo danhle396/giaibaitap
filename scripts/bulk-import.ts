@@ -161,8 +161,12 @@ async function importOne(filename: string, parsed: ParseResult): Promise<"create
     body: JSON.stringify({ data }),
   });
 
-  // Publish the document (Strapi v5 creates as draft by default)
-  await api(`/bai-giais/${created.data.documentId}/actions/publish`, { method: "POST" });
+  // Strapi v5 creates as draft. Publish by issuing PUT ?status=published with an
+  // empty data payload — Strapi v5 promotes the draft to a published version.
+  await api(`/bai-giais/${created.data.documentId}?status=published`, {
+    method: "PUT",
+    body: JSON.stringify({ data: {} }),
+  });
 
   console.log(`✓ ${filename}: created + published "${fm.slug}"`);
   return "created";

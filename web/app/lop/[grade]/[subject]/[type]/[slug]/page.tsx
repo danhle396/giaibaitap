@@ -160,10 +160,7 @@ export default async function BaiGiaiPage({ params }: Props) {
 
             <TableOfContents />
 
-            <div
-              className="article-body prose prose-gray dark:prose-invert max-w-none"
-              dangerouslySetInnerHTML={{ __html: noiDungHtml }}
-            />
+            <div className="article-body" dangerouslySetInnerHTML={{ __html: noiDungHtml }} />
 
             <InArticleAd slot="1234567890" />
 

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "katex/dist/katex.min.css";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #ffffff;
@@ -29,6 +30,178 @@ body {
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.5rem 0;
+}
+
+/* Article body: VietJack-style readability — big breathing room, generous
+   paragraph spacing, larger body font for VN diacritics, headings clearly
+   separated so eyes can chunk content visually. */
+.article-body {
+  font-size: 1.125rem;
+  line-height: 1.95;
+  color: #1f2937;
+  max-width: 78ch;
+  margin-inline: auto;
+  letter-spacing: 0.005em;
+  word-spacing: 0.02em;
+}
+.dark .article-body { color: #e5e7eb; }
+
+.article-body p {
+  margin-block: 1.5rem;
+}
+
+.article-body h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid #dbeafe;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  scroll-margin-top: 5rem;
+}
+.dark .article-body h2 { color: #f9fafb; border-color: #1e3a8a; }
+
+.article-body h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #1d4ed8;
+  scroll-margin-top: 5rem;
+}
+.dark .article-body h3 { color: #93c5fd; }
+
+.article-body h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+.dark .article-body h4 { color: #d1d5db; }
+
+.article-body strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+.dark .article-body strong { color: #f9fafb; }
+
+.article-body em {
+  color: #475569;
+  font-style: italic;
+}
+.dark .article-body em { color: #cbd5e1; }
+
+.article-body a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.article-body a:hover { color: #1d4ed8; }
+.dark .article-body a { color: #60a5fa; }
+
+.article-body ul, .article-body ol {
+  padding-left: 1.75rem;
+  margin-block: 1.5rem;
+}
+.article-body li {
+  margin-block: 0.75rem;
+  padding-left: 0.25rem;
+}
+.article-body ul > li { list-style: disc; }
+.article-body ol > li { list-style: decimal; }
+.article-body li::marker { color: #2563eb; }
+
+.article-body blockquote {
+  border-left: 4px solid #2563eb;
+  background: #f0f7ff;
+  padding: 1rem 1.25rem;
+  margin: 1.75rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: #1e3a8a;
+}
+.dark .article-body blockquote {
+  background: #172554;
+  color: #bfdbfe;
+  border-color: #60a5fa;
+}
+.article-body blockquote p {
+  margin: 0;
+  line-height: 1.85;
+}
+
+.article-body hr {
+  border: 0;
+  border-top: 1px dashed #cbd5e1;
+  margin: 2.5rem auto;
+  width: 60%;
+}
+.dark .article-body hr { border-color: #475569; }
+
+.article-body code {
+  background: #f3f4f6;
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #be185d;
+}
+.dark .article-body code { background: #1f2937; color: #f9a8d4; }
+
+.article-body pre {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  line-height: 1.6;
+}
+.article-body pre code { background: transparent; color: inherit; padding: 0; }
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-size: 1rem;
+}
+.article-body th {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1e40af;
+}
+.dark .article-body th { background: #1e3a8a; border-color: #475569; color: #f1f5f9; }
+.article-body td {
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem 0.9rem;
+}
+.dark .article-body td { border-color: #334155; }
+
+/* FAQ pattern: paragraph starting with **Q: / **A: gets visual emphasis */
+.article-body p strong:first-child {
+  display: inline-block;
+  color: #1d4ed8;
+  margin-right: 0.25rem;
+}
+.dark .article-body p strong:first-child { color: #93c5fd; }
+
+@media (max-width: 640px) {
+  .article-body {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    max-width: 100%;
+  }
+  .article-body h2 { font-size: 1.4rem; margin-top: 2.25rem; }
+  .article-body h3 { font-size: 1.15rem; margin-top: 2rem; }
+  .article-body p { margin-block: 1.25rem; }
+  .article-body ul, .article-body ol { padding-left: 1.5rem; }
 }
 
 /* Print styles */

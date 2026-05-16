@@ -84,10 +84,7 @@ export default async function SoanVanPage({ params }: Props) {
 
       <TableOfContents />
 
-      <article
-        className="article-body prose prose-gray dark:prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: noiDungHtml }}
-      />
+      <article className="article-body" dangerouslySetInnerHTML={{ __html: noiDungHtml }} />
     </div>
   );
 }

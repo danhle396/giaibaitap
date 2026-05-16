@@ -14,31 +14,46 @@ interface TableOfContentsProps {
   content?: string;
 }
 
+function slugifyVN(text: string): string {
+  return text
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "d")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 function buildToc(): TocItem[] {
-  if (typeof document === "undefined") return [];
   const headings = Array.from(
     document.querySelectorAll(".article-body h2, .article-body h3")
   ) as HTMLElement[];
-  const toc: TocItem[] = headings.map((el) => ({
-    id:
-      el.id ||
-      el.textContent?.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "") ||
-      "",
-    text: el.textContent || "",
-    level: el.tagName === "H2" ? 2 : 3,
-  }));
-  headings.forEach((el, i) => {
-    if (!el.id) el.id = toc[i].id;
+  const seen = new Map<string, number>();
+  return headings.map((el) => {
+    const text = el.textContent || "";
+    const base = el.id || slugifyVN(text) || "heading";
+    const count = seen.get(base) ?? 0;
+    seen.set(base, count + 1);
+    const id = count === 0 ? base : `${base}-${count + 1}`;
+    el.id = id;
+    return { id, text, level: el.tagName === "H2" ? 2 : 3 };
   });
-  return toc;
 }
 
 export function TableOfContents({}: TableOfContentsProps) {
-  const [items] = useState<TocItem[]>(buildToc);
+  const [items, setItems] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
+    setItems(buildToc());
+  }, []);
+
+  useEffect(() => {
+    if (items.length === 0) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
