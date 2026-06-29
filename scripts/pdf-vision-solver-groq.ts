@@ -113,9 +113,22 @@ ${body}
   return { slug, md };
 }
 
-// ─── Groq Vision ──────────────────────────────────────────────────────────────
+// ─── Groq Vision (multi-key rotation) ─────────────────────────────────────────
 
-let groq: Groq;
+let groqClients: Groq[] = [];
+let activeKeyIdx = 0;
+const exhaustedKeys = new Set<number>();
+
+function rotateKey(reason: string): boolean {
+  exhaustedKeys.add(activeKeyIdx);
+  const remaining = groqClients.length - exhaustedKeys.size;
+  if (remaining === 0) return false;
+  do {
+    activeKeyIdx = (activeKeyIdx + 1) % groqClients.length;
+  } while (exhaustedKeys.has(activeKeyIdx));
+  console.log(`\n   🔄 Đổi sang GROQ_API_KEY #${activeKeyIdx + 1}/${groqClients.length} (${reason})`);
+  return true;
+}
 
 async function analyzePageWithGroq(
   imageBuffer: Buffer,
@@ -149,23 +162,31 @@ Quy tắc:
 - Hình vẽ/đồ thị: mô tả bằng lời thay thế
 - Trắc nghiệm: giải thích lý do chọn đáp án`;
 
-  const response = await groq.chat.completions.create({
-    model: GROQ_MODEL,
-    max_tokens: 4096,
-    messages: [
-      {
-        role: "user",
-        content: [
-          { type: "image_url", image_url: { url: `data:image/png;base64,${base64}` } },
-          { type: "text", text: prompt },
+  while (true) {
+    try {
+      const response = await groqClients[activeKeyIdx].chat.completions.create({
+        model: GROQ_MODEL,
+        max_tokens: 4096,
+        messages: [
+          {
+            role: "user",
+            content: [
+              { type: "image_url", image_url: { url: `data:image/png;base64,${base64}` } },
+              { type: "text", text: prompt },
+            ],
+          },
         ],
-      },
-    ],
-  });
-
-  const text = (response.choices[0]?.message?.content ?? "").trim();
-  const hasExercises = text !== "SKIP" && text.length > 20;
-  return { hasExercises, content: text };
+      });
+      const text = (response.choices[0]?.message?.content ?? "").trim();
+      const hasExercises = text !== "SKIP" && text.length > 20;
+      return { hasExercises, content: text };
+    } catch (err: any) {
+      const msg = err?.message ?? "";
+      const isQuotaDay = msg.includes("tokens per day") || msg.includes("TPD");
+      if (isQuotaDay && rotateKey("hết quota ngày")) continue;
+      throw err;
+    }
+  }
 }
 
 // ─── Main ────────────────────────────────────────────────────────────────────
@@ -180,18 +201,25 @@ async function main() {
     }
   } catch { /* không có file thì thôi */ }
 
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) {
+  // Multi-key: GROQ_API_KEY, GROQ_API_KEY_2, GROQ_API_KEY_3, ...
+  const keys: string[] = [];
+  if (process.env.GROQ_API_KEY) keys.push(process.env.GROQ_API_KEY);
+  for (let i = 2; i <= 10; i++) {
+    const k = process.env[`GROQ_API_KEY_${i}`];
+    if (k) keys.push(k);
+  }
+  if (keys.length === 0) {
     console.error(
-      "❌ GROQ_API_KEY chưa set\n" +
+      "❌ Không có GROQ_API_KEY nào trong .env.local\n" +
       "   1. Đăng ký tại: https://console.groq.com\n" +
       "   2. Tạo key tại: https://console.groq.com/keys\n" +
-      "   3. Thêm vào .env.local: GROQ_API_KEY=gsk_..."
+      "   3. Thêm vào .env.local: GROQ_API_KEY=gsk_...\n" +
+      "   4. Tạo thêm account để có GROQ_API_KEY_2, GROQ_API_KEY_3, ..."
     );
     process.exit(1);
   }
-
-  groq = new Groq({ apiKey });
+  groqClients = keys.map((k) => new Groq({ apiKey: k }));
+  console.log(`🔑 ${keys.length} GROQ key(s) sẵn sàng (xoay vòng khi hết quota)`);
 
   console.log(`\n📖 Đọc PDF: ${pdfPath}`);
   const pdfBuffer = await readFile(pdfPath!);

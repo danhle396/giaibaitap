@@ -253,17 +253,43 @@ ${item.ten_tac_pham}
 Yêu cầu: Chính xác, không bịa đặt, phù hợp học sinh lớp ${item.lop}.`;
 }
 
-// ─── Groq API ─────────────────────────────────────────────────────────────────
+// ─── Groq API (multi-key rotation) ────────────────────────────────────────────
 
-let groq: Groq;
+let groqClients: Groq[] = [];
+let activeKeyIdx = 0;
+const exhaustedKeys = new Set<number>();
+
+function currentGroq(): Groq {
+  return groqClients[activeKeyIdx];
+}
+
+function rotateKey(reason: string): boolean {
+  exhaustedKeys.add(activeKeyIdx);
+  const remaining = groqClients.length - exhaustedKeys.size;
+  if (remaining === 0) return false;
+  do {
+    activeKeyIdx = (activeKeyIdx + 1) % groqClients.length;
+  } while (exhaustedKeys.has(activeKeyIdx));
+  console.log(`\n   🔄 Đổi sang GROQ_API_KEY #${activeKeyIdx + 1}/${groqClients.length} (${reason})`);
+  return true;
+}
 
 async function generateWithGroq(prompt: string): Promise<string> {
-  const res = await groq.chat.completions.create({
-    model: GROQ_MODEL,
-    max_tokens: 8000,
-    messages: [{ role: "user", content: prompt }],
-  });
-  return (res.choices[0]?.message?.content ?? "").trim();
+  while (true) {
+    try {
+      const res = await currentGroq().chat.completions.create({
+        model: GROQ_MODEL,
+        max_tokens: 8000,
+        messages: [{ role: "user", content: prompt }],
+      });
+      return (res.choices[0]?.message?.content ?? "").trim();
+    } catch (err: any) {
+      const msg = err?.message ?? "";
+      const isQuotaDay = msg.includes("tokens per day") || msg.includes("TPD");
+      if (isQuotaDay && rotateKey("hết quota ngày")) continue;
+      throw err;
+    }
+  }
 }
 
 // ─── Main ────────────────────────────────────────────────────────────────────
@@ -278,13 +304,19 @@ async function main() {
     }
   } catch { /* không có file thì thôi */ }
 
-  const apiKey = process.env.GROQ_API_KEY;
-  if (!apiKey) {
-    console.error("❌ GROQ_API_KEY chưa set trong .env.local");
+  // Hỗ trợ nhiều key: GROQ_API_KEY, GROQ_API_KEY_2, GROQ_API_KEY_3, ...
+  const keys: string[] = [];
+  if (process.env.GROQ_API_KEY) keys.push(process.env.GROQ_API_KEY);
+  for (let i = 2; i <= 10; i++) {
+    const k = process.env[`GROQ_API_KEY_${i}`];
+    if (k) keys.push(k);
+  }
+  if (keys.length === 0) {
+    console.error("❌ Không có GROQ_API_KEY nào trong .env.local");
     process.exit(1);
   }
-
-  groq = new Groq({ apiKey });
+  groqClients = keys.map((k) => new Groq({ apiKey: k }));
+  console.log(`🔑 ${keys.length} GROQ key(s) sẵn sàng (xoay vòng khi hết quota)`);
 
   if (!existsSync(outDir)) await mkdir(outDir, { recursive: true });
 
