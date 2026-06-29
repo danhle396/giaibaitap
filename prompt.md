@@ -1,0 +1,1 @@
+Hãy tuân thủ việc chọn thực hiện công việc cho từng task.>- 'model_selection.md' Làm công việc với những yêu cầu trong file này để cho ra chất lượng tốt nhất.>- CLAUDE.md. Đây là hướng dẫn file thực hiện công việc. - huong_dan_giaibaitap.md. Hãy thực hiện các công việc trong file - task_giaibaitap.md.

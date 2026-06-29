@@ -1,7 +1,26 @@
 node_modules/
 .env*
+!.env.example
+!.env.local.example
 .next/
 dist/
 .DS_Store
 *.log
 .vercel
+
+# Backup files (data export, không push lên repo)
+backup-strapi-data*.tar.gz
+
+# Content nguồn (rất nhiều file, không cần đẩy lên repo)
+content-templates/extracted/
+content-templates/inbox/
+content-templates/inbox-toan/
+
+# PDFs gốc (lớn, không push)
+pdfs/lop-*/*.pdf
+
+# Claude Code settings (local)
+.claude/
+
+# Ảnh sơ đồ private
+sơ đồ .claude.png

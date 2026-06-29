@@ -1,0 +1,26 @@
+{
+  "name": "giaibaitap-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "import": "tsx scripts/bulk-import.ts",
+    "solve": "tsx scripts/pdf-solver.ts",
+    "extract": "tsx scripts/pdf-extract.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.54.0",
+    "@google/genai": "^2.3.0",
+    "@google/generative-ai": "^0.24.1",
+    "canvas": "^3.2.3",
+    "groq-sdk": "^1.2.0",
+    "pdf-parse": "^1.1.1",
+    "pdf-to-img": "^6.0.0",
+    "pdfjs-dist": "^5.7.284"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/pdf-parse": "^1.1.4",
+    "tsx": "^4.19.4",
+    "typescript": "^5"
+  }
+}

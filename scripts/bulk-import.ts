@@ -27,6 +27,15 @@
 
 import { readdir, readFile } from "node:fs/promises";
 import { join, extname } from "node:path";
+import { readFileSync, existsSync } from "node:fs";
+
+// Load .env.local nếu có
+if (existsSync(".env.local")) {
+  for (const line of readFileSync(".env.local", "utf8").split("\n")) {
+    const m = /^([A-Z_]+)=(.+)$/.exec(line.trim());
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
+  }
+}
 
 const STRAPI_URL = process.env.STRAPI_URL ?? "http://localhost:1337";
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN ?? "";
