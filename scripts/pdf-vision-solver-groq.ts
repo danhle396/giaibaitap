@@ -196,7 +196,7 @@ async function main() {
   try {
     const envContent = await readFile(".env.local", "utf8");
     for (const line of envContent.split("\n")) {
-      const m = /^([A-Z_]+)=(.+)$/.exec(line.trim());
+      const m = /^([A-Z_][A-Z0-9_]*)=(.+)$/.exec(line.trim());
       if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
     }
   } catch { /* không có file thì thôi */ }

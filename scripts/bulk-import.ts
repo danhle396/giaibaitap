@@ -32,7 +32,7 @@ import { readFileSync, existsSync } from "node:fs";
 // Load .env.local nếu có
 if (existsSync(".env.local")) {
   for (const line of readFileSync(".env.local", "utf8").split("\n")) {
-    const m = /^([A-Z_]+)=(.+)$/.exec(line.trim());
+    const m = /^([A-Z_][A-Z0-9_]*)=(.+)$/.exec(line.trim());
     if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
   }
 }
