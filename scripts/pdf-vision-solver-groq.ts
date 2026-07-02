@@ -78,32 +78,57 @@ function parsePageRange(spec: string | null, total: number): number[] {
   return spec.split(",").map(Number);
 }
 
+const SUBJECT_LABELS: Record<string, string> = {
+  toan: "Toán",
+  van: "Ngữ Văn",
+  anh: "Tiếng Anh",
+  ly: "Vật Lí",
+  hoa: "Hoá Học",
+  sinh: "Sinh Học",
+  su: "Lịch Sử",
+  dia: "Địa Lí",
+  gdcd: "GDCD",
+  tin: "Tin Học",
+};
+
+const IS_VAN = mon === "van";
+const VERB = IS_VAN ? "soan" : "giai";
+const LOAI = IS_VAN ? "soan-van" : "giai-sgk";
+
 function buildChunkSlug(firstPage: number, lastPage: number): string {
   const code = BOOK_CODE[boSach] ?? "unknown";
   return firstPage === lastPage
-    ? `giai-toan-${lop}-tap-${tap}-trang-${firstPage}-${code}`
-    : `giai-toan-${lop}-tap-${tap}-trang-${firstPage}-${lastPage}-${code}`;
+    ? `${VERB}-${mon}-${lop}-tap-${tap}-trang-${firstPage}-${code}`
+    : `${VERB}-${mon}-${lop}-tap-${tap}-trang-${firstPage}-${lastPage}-${code}`;
 }
 
 function buildMdFile(pages: Array<{ page: number; content: string }>): { slug: string; md: string } {
   const firstPage = pages[0].page;
   const lastPage = pages[pages.length - 1].page;
   const bookName = BOOK_NAMES[boSach] ?? boSach;
+  const subjectLabel = SUBJECT_LABELS[mon] ?? mon;
   const slug = buildChunkSlug(firstPage, lastPage);
   const pageRange = firstPage === lastPage ? `${firstPage}` : `${firstPage}-${lastPage}`;
-  const tieu_de = `Giải Toán ${lop} Tập ${tap} trang ${pageRange} - ${bookName}`;
+  const tieu_de = IS_VAN
+    ? `Soạn ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} - ${bookName}`
+    : `Giải ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} - ${bookName}`;
   const metaTitle = tieu_de.length > 60 ? tieu_de.slice(0, 57) + "..." : tieu_de;
-  const metaDesc = `Giải bài tập Toán ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Lời giải chi tiết từng bài, đầy đủ các bước.`.slice(0, 155);
+  const metaDesc = IS_VAN
+    ? `Soạn bài ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Trả lời câu hỏi SGK, phân tích chi tiết.`.slice(0, 155)
+    : `Giải bài tập ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Lời giải chi tiết từng bài, đầy đủ các bước.`.slice(0, 155);
+  const tomTat = IS_VAN
+    ? `Soạn bài ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Hướng dẫn soạn chi tiết, bám sát SGK.`
+    : `Giải bài tập ${subjectLabel} ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Lời giải chi tiết, đủ bước.`;
   const body = pages.map((p) => p.content.trim()).join("\n\n---\n\n");
 
   const md = `---
 tieu_de: "${tieu_de.replace(/"/g, "'")}"
 slug: ${slug}
 lop: ${lop}
-loai: giai-sgk
+loai: ${LOAI}
 mon: ${mon}
 bo_sach: ${boSach}
-tom_tat: "Giải bài tập Toán ${lop} Tập ${tap} trang ${pageRange} ${bookName}. Lời giải chi tiết, đủ bước, dành cho học sinh THPT."
+tom_tat: "${tomTat.replace(/"/g, "'")}"
 meta_title: "${metaTitle.replace(/"/g, "'")}"
 meta_description: "${metaDesc.replace(/"/g, "'")}"
 ---
@@ -136,7 +161,35 @@ async function analyzePageWithGroq(
 ): Promise<{ hasExercises: boolean; content: string }> {
   const base64 = imageBuffer.toString("base64");
 
-  const prompt = `Đây là trang ${pageNum} trong SGK Toán lớp ${lop} (${BOOK_NAMES[boSach] ?? boSach}, Tập ${tap}).
+  const subjectLabel = SUBJECT_LABELS[mon] ?? mon;
+  const prompt = IS_VAN ? `Đây là trang ${pageNum} trong SGK Ngữ Văn lớp ${lop} (${BOOK_NAMES[boSach] ?? boSach}, Tập ${tap}).
+
+QUY TẮC BẮT BUỘC:
+- CHỈ dựa trên nội dung có trong ảnh trang này. TUYỆT ĐỐI KHÔNG bịa câu hỏi/dẫn chứng không có trong ảnh.
+- Trích dẫn nguyên văn khi cần (đặt trong dấu ngoặc kép "...").
+- Nếu trang chỉ có: bìa/mục lục/lời nói đầu/hình ảnh minh họa/lý thuyết thuần → trả về đúng 1 từ "SKIP".
+
+Nhiệm vụ:
+1. Xác định các CÂU HỎI/YÊU CẦU trong ảnh (thường bắt đầu: "Câu 1", "Đọc hiểu", "Sau khi đọc", "Chuẩn bị", "Suy ngẫm và phản hồi", "Trả lời câu hỏi", "Viết", "Nói và nghe", "Luyện tập"...).
+2. Với mỗi câu hỏi, viết câu trả lời/soạn bài đầy đủ.
+
+Format trả về:
+## Trang ${pageNum} — [Tên bài/chương/tác phẩm nếu thấy trên trang]
+
+**Câu X.** [chép nguyên văn câu hỏi từ SGK]
+
+**Trả lời:**
+[trả lời chi tiết, có dẫn chứng nguyên văn từ tác phẩm khi cần]
+
+---
+[lặp lại cho câu tiếp theo]
+
+Yêu cầu:
+- Trả lời phù hợp trình độ học sinh lớp ${lop}
+- Dùng markdown, tiếng Việt có dấu
+- Với câu phân tích tác phẩm: nêu luận điểm rõ ràng, có dẫn chứng
+- Với câu ngữ pháp/tiếng Việt: giải thích thuật ngữ ngắn gọn`
+    : `Đây là trang ${pageNum} trong SGK ${subjectLabel} lớp ${lop} (${BOOK_NAMES[boSach] ?? boSach}, Tập ${tap}).
 
 Nhiệm vụ:
 1. Trang này có BÀI TẬP / CÂU HỎI / LUYỆN TẬP / VÍ DỤ cần giải không?
