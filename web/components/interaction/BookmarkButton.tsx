@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Bookmark, BookmarkCheck } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface BookmarkButtonProps {
   id: string;
@@ -18,7 +19,7 @@ function readBookmarks(): string[] {
   }
 }
 
-export function BookmarkButton({ id }: BookmarkButtonProps) {
+export function BookmarkButton({ id, href }: BookmarkButtonProps) {
   const [saved, setSaved] = useState(() => readBookmarks().includes(id));
 
   function toggle() {
@@ -26,6 +27,7 @@ export function BookmarkButton({ id }: BookmarkButtonProps) {
     const next = saved ? bookmarks.filter((b) => b !== id) : [...bookmarks, id];
     localStorage.setItem("bookmarks", JSON.stringify(next));
     setSaved(!saved);
+    trackEvent(saved ? "unbookmark" : "bookmark", "engagement", href);
   }
 
   return (

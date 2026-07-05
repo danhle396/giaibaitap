@@ -12,6 +12,7 @@ import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { ArticleSchema } from "@/components/seo/ArticleSchema";
+import { ArticleTracker } from "@/components/analytics/ArticleTracker";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { PrevNextNav } from "@/components/article/PrevNextNav";
 import { ShareButtons } from "@/components/interaction/ShareButtons";
@@ -131,6 +132,7 @@ export default async function BaiGiaiPage({ params }: Props) {
         dateModified={b.updatedAt}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleTracker label={`lop-${b.lop}/${b.mon_hoc.ma}/${b.slug}`} />
 
       <div className="flex gap-8">
         <div className="flex-1 min-w-0">

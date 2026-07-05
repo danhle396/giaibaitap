@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Search, X } from "lucide-react";
 import Link from "next/link";
 import { buildSearchUrl } from "@/lib/url";
+import { trackEvent } from "@/lib/analytics";
 
 const SUGGESTIONS = [
   { label: "Giải SGK Toán 12 Kết nối tri thức", href: "/lop-12/toan/giai-sgk-toan-lop-12-ket-noi-tri-thuc" },
@@ -38,8 +39,10 @@ export function SearchBox({ onClose, autoFocus }: SearchBoxProps) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (query.trim()) {
-      router.push(buildSearchUrl(query.trim()));
+    const q = query.trim();
+    if (q) {
+      trackEvent("search", "site_search", q);
+      router.push(buildSearchUrl(q));
       onClose?.();
     }
   }

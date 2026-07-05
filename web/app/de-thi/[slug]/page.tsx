@@ -6,6 +6,7 @@ import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
 import { ArticleSchema } from "@/components/seo/ArticleSchema";
+import { ArticleTracker } from "@/components/analytics/ArticleTracker";
 import { ShareButtons } from "@/components/interaction/ShareButtons";
 import { formatDate } from "@/lib/utils";
 import { getDeThiBySlug, listDeThi } from "@/lib/strapi";
@@ -64,6 +65,7 @@ export default async function DeThiDetailPage({ params }: Props) {
         dateModified={d.publishedAt}
       />
       <BreadcrumbSchema items={breadcrumbs} />
+      <ArticleTracker label={`de-thi/${d.slug}`} />
       <Breadcrumb items={breadcrumbs} />
 
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mt-4 mb-2">

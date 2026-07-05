@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Share2, Link2, Mail, Check } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 interface ShareButtonsProps {
   url: string;
@@ -17,6 +18,7 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
   function copyLink() {
     navigator.clipboard.writeText(fullUrl).then(() => {
       setCopied(true);
+      trackEvent("share", "engagement", `copy_link:${url}`);
       setTimeout(() => setCopied(false), 2000);
     });
   }
@@ -25,20 +27,27 @@ export function ShareButtons({ url, title }: ShareButtonsProps) {
     <div className="flex items-center gap-2 flex-wrap">
       <span className="text-sm text-gray-500 dark:text-gray-400">Chia sẻ:</span>
       <button
-        onClick={() => window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, "_blank", "width=600,height=400")}
+        onClick={() => {
+          trackEvent("share", "engagement", `facebook:${url}`);
+          window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, "_blank", "width=600,height=400");
+        }}
         className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-blue-600 hover:bg-blue-700 text-white rounded-md"
       >
         <Share2 className="h-3.5 w-3.5" />
         Facebook
       </button>
       <button
-        onClick={() => window.open(`https://zalo.me/share/url?url=${encodedUrl}&title=${encodedTitle}`, "_blank", "width=600,height=400")}
+        onClick={() => {
+          trackEvent("share", "engagement", `zalo:${url}`);
+          window.open(`https://zalo.me/share/url?url=${encodedUrl}&title=${encodedTitle}`, "_blank", "width=600,height=400");
+        }}
         className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-blue-400 hover:bg-blue-500 text-white rounded-md"
       >
         Zalo
       </button>
       <a
         href={`mailto:?subject=${encodedTitle}&body=${encodedUrl}`}
+        onClick={() => trackEvent("share", "engagement", `email:${url}`)}
         className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-gray-600 hover:bg-gray-700 text-white rounded-md"
       >
         <Mail className="h-3.5 w-3.5" />
