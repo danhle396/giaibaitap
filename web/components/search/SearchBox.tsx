@@ -7,15 +7,16 @@ import Link from "next/link";
 import { buildSearchUrl } from "@/lib/url";
 import { trackEvent } from "@/lib/analytics";
 
+// Chỉ gợi ý nội dung ĐÃ CÓ trên site
 const SUGGESTIONS = [
-  { label: "Giải SGK Toán 12 Kết nối tri thức", href: "/lop-12/toan/giai-sgk-toan-lop-12-ket-noi-tri-thuc" },
-  { label: "Soạn bài Truyện Kiều", href: "/soan-van/tuyen-kieu" },
-  { label: "Đề thi tốt nghiệp THPT 2025 Toán", href: "/de-thi/de-thi-tot-nghiep-thpt-2025-mon-toan-de-101" },
-  { label: "Giải toán 9 SGK Kết nối", href: "/lop-9/toan" },
-  { label: "Soạn bài Chí Phèo Văn 11", href: "/soan-van/chi-pheo" },
-  { label: "Công thức lượng giác lớp 11", href: "/lop-11/toan" },
-  { label: "Đề thi vào lớp 10 Hà Nội", href: "/de-thi/de-thi-vao-lop-10-ha-noi-2025" },
-  { label: "Giải hóa 12 Kết nối tri thức", href: "/lop-12/hoa" },
+  { label: "Soạn văn 12 Kết nối tri thức", href: "/lop-12/van" },
+  { label: "Soạn văn 12 Chân trời sáng tạo", href: "/lop-12/van" },
+  { label: "Soạn văn 12 Cánh Diều", href: "/lop-12/van" },
+  { label: "Soạn văn 9 Kết nối tri thức", href: "/lop-9/van" },
+  { label: "Giải Toán 10 Kết nối tri thức", href: "/lop-10/toan" },
+  { label: "Giải Toán 10 Chân trời sáng tạo", href: "/lop-10/toan" },
+  { label: "Giải Toán 10 Cánh Diều", href: "/lop-10/toan" },
+  { label: "Đề thi & đáp án", href: "/de-thi" },
 ];
 
 interface SearchBoxProps {

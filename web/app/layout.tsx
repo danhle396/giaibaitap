@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { OrganizationSchema } from "@/components/seo/OrganizationSchema";
+import { WebSiteSchema } from "@/components/seo/WebSiteSchema";
 import { buildDefaultMetadata } from "@/lib/seo";
 import { GA4_ID, CLARITY_ID } from "@/lib/analytics";
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="vi" suppressHydrationWarning>
       <head>
         <OrganizationSchema />
+        <WebSiteSchema />
         {ga4Id && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />

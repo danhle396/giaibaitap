@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { Grade, Subject, BoSach } from "@/types";
 import { SUBJECT_LABELS, BO_SACH_LABELS, buildBaiGiaiUrl, buildSoanVanUrl, buildDeThiUrl } from "./url";
 
-const SITE_NAME = "Giải Bài Tập";
+const SITE_NAME = "Giải Bài Tập 247";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://giaibaitap247.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.png`;
 
@@ -83,17 +83,40 @@ export function buildMetadata({
 export function buildDefaultMetadata(): Metadata {
   return {
     title: {
-      default: `${SITE_NAME} - Giải bài tập SGK, SBT tất cả môn học miễn phí`,
+      default: `${SITE_NAME} - Giải bài tập SGK, soạn văn, đề thi lớp 1-12 miễn phí`,
       template: `%s | ${SITE_NAME}`,
     },
     description:
-      "Giải bài tập SGK, SBT, soạn văn, đề thi tất cả các môn học từ lớp 1 đến lớp 12. Lời giải chi tiết, dễ hiểu, miễn phí.",
+      "Giải bài tập SGK bám sát từng trang sách 3 bộ Kết nối tri thức, Chân trời sáng tạo, Cánh Diều. Soạn văn, đề thi, trắc nghiệm lớp 1-12. Miễn phí, không cần đăng ký.",
     metadataBase: new URL(SITE_URL),
+    applicationName: SITE_NAME,
+    openGraph: {
+      siteName: SITE_NAME,
+      locale: "vi_VN",
+      type: "website",
+      url: SITE_URL,
+      images: [{ url: DEFAULT_OG_IMAGE, width: 1200, height: 630, alt: SITE_NAME }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [DEFAULT_OG_IMAGE],
+    },
+    icons: {
+      icon: [
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: "/apple-icon.png",
+      shortcut: "/favicon.ico",
+    },
     verification: {
       google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
     },
     other: {
       "msvalidate.01": process.env.NEXT_PUBLIC_BING_VERIFICATION || "",
+      "geo.region": "VN",
+      "geo.placename": "Việt Nam",
+      "content-language": "vi",
     },
   };
 }

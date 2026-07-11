@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Search, BookOpen, ChevronDown } from "lucide-react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { GRADES, SUBJECT_LABELS, buildLopUrl, buildMonUrl } from "@/lib/url";
 import type { Grade, Subject } from "@/types";
 import { DarkModeToggle } from "@/components/interaction/DarkModeToggle";
 import { SearchBox } from "@/components/search/SearchBox";
+import { Logo } from "@/components/ui/Logo";
 
 const MAIN_SUBJECTS: Subject[] = ["toan", "van", "anh", "ly", "hoa", "sinh"];
 
@@ -20,11 +21,8 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <BookOpen className="h-7 w-7 text-blue-600" />
-            <span className="font-bold text-lg text-gray-900 dark:text-white">
-              Giải Bài Tập
-            </span>
+          <Link href="/" className="shrink-0" aria-label="Giải Bài Tập 247 — Trang chủ">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}

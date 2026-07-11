@@ -4,21 +4,29 @@ export function OrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    name: "Giải Bài Tập",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Giải Bài Tập 247",
+    alternateName: "giaibaitap247",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    sameAs: [
-      "https://www.facebook.com/giaibaitap",
-      "https://youtube.com/@giaibaitap",
-    ],
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logo.png`,
+      width: 512,
+      height: 512,
+    },
     contactPoint: {
       "@type": "ContactPoint",
       email: "lienhe@giaibaitap247.com",
       contactType: "customer service",
       availableLanguage: "Vietnamese",
     },
+    areaServed: {
+      "@type": "Country",
+      name: "Vietnam",
+    },
+    knowsLanguage: "vi",
     description:
-      "Website giải bài tập SGK, SBT, soạn văn, đề thi tất cả các môn học từ lớp 1 đến lớp 12. Miễn phí, dễ hiểu.",
+      "Website giải bài tập SGK, soạn văn, đề thi từ lớp 1 đến lớp 12, biên soạn bám sát sách giáo khoa hiện hành (Kết nối tri thức, Chân trời sáng tạo, Cánh Diều). Miễn phí cho học sinh Việt Nam.",
   };
   return (
     <script

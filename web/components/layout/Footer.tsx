@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { BookOpen, Globe, Mail, ExternalLink } from "lucide-react";
+import { Mail } from "lucide-react";
 import { GRADES, buildLopUrl } from "@/lib/url";
+import { Logo } from "@/components/ui/Logo";
 
 const LEGAL_LINKS = [
   { label: "Giới thiệu", href: "/gioi-thieu" },
@@ -27,24 +28,21 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <BookOpen className="h-6 w-6 text-blue-400" />
-              <span className="font-bold text-white text-lg">Giải Bài Tập</span>
+            <Link href="/" className="inline-block mb-4" aria-label="Giải Bài Tập 247 — Trang chủ">
+              <Logo dark />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Lời giải bài tập SGK, SBT, soạn văn, đề thi tất cả các môn học từ lớp 1 đến lớp 12. Miễn phí, dễ hiểu.
+              Lời giải bài tập SGK biên soạn bám sát từng trang sách — đủ 3 bộ sách
+              Kết nối tri thức, Chân trời sáng tạo, Cánh Diều. Soạn văn, đề thi, trắc nghiệm.
+              Miễn phí cho học sinh Việt Nam.
             </p>
-            <div className="flex items-center gap-3 mt-4">
-              <a href="https://facebook.com/giaibaitap" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-blue-400 transition-colors">
-                <Globe className="h-5 w-5" />
-              </a>
-              <a href="https://youtube.com/@giaibaitap" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-400 hover:text-red-400 transition-colors">
-                <ExternalLink className="h-5 w-5" />
-              </a>
-              <a href="mailto:lienhe@giaibaitap247.com" aria-label="Email" className="text-gray-400 hover:text-green-400 transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
+            <a
+              href="mailto:lienhe@giaibaitap247.com"
+              className="inline-flex items-center gap-2 mt-4 text-sm text-gray-400 hover:text-white transition-colors"
+            >
+              <Mail className="h-4 w-4" />
+              lienhe@giaibaitap247.com
+            </a>
           </div>
 
           {/* Theo lớp */}
