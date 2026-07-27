@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,6 +10,13 @@ import { GA4_ID, CLARITY_ID } from "@/lib/analytics";
 
 export const metadata: Metadata = buildDefaultMetadata();
 
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["vietnamese", "latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -16,7 +24,7 @@ export default function RootLayout({
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 
   return (
-    <html lang="vi" suppressHydrationWarning>
+    <html lang="vi" className={beVietnamPro.variable} suppressHydrationWarning>
       <head>
         <OrganizationSchema />
         <WebSiteSchema />
