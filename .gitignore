@@ -11,10 +11,12 @@ dist/
 # Backup files (data export, không push lên repo)
 backup-strapi-data*.tar.gz
 
-# Content nguồn (rất nhiều file, không cần đẩy lên repo)
+# Ảnh render từ PDF (rất nặng, không cần đẩy lên repo)
 content-templates/extracted/
-content-templates/inbox/
-content-templates/inbox-toan/
+
+# LƯU Ý: web/content/bai-giai/*.md LÀ NGUỒN DỮ LIỆU CỦA WEBSITE — phải commit.
+# content-templates/ là khu vực nháp; chạy `node scripts/consolidate-content.mjs`
+# để gom về web/content/bai-giai/.
 
 # PDFs gốc (lớn, không push)
 pdfs/lop-*/*.pdf
