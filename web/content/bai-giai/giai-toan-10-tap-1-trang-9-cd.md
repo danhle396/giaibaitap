@@ -20,8 +20,8 @@ meta_description: "Giải bài tập Toán 10 Tập 1 trang 9 Cánh diều. Lờ
 
 **Lời giải:**
 
-Mệnh đề phủ định của mệnh đề $"16$ là bình phương của một số nguyên"$ là  
-$"16$ không là bình phương của một số nguyên"$. 
+Mệnh đề phủ định của mệnh đề "$16$ là bình phương của một số nguyên" là
+"$16$ không là bình phương của một số nguyên". 
 
 Ta có $4^2 = 16$ nên mệnh đề **a** đúng, do đó mệnh đề phủ định **a** sai.
 

@@ -9,13 +9,17 @@
  *
  * Chạy: node scripts/consolidate-content.mjs [--dry-run]
  */
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, statSync } from "fs";
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, statSync, existsSync } from "fs";
 import { join, relative } from "path";
 
 const ROOT = process.cwd();
 const SRC = join(ROOT, "content-templates");
 const OUT = join(ROOT, "web", "content", "bai-giai");
 const DRY = process.argv.includes("--dry-run");
+// MẶC ĐỊNH KHÔNG GHI ĐÈ: web/content/bai-giai là nguồn dữ liệu thật của website và
+// có thể đã được sửa tay (sửa công thức hỏng, giải lại từ PDF). Chỉ thêm bài MỚI.
+// Dùng --force khi thật sự muốn ghi đè toàn bộ từ content-templates.
+const FORCE = process.argv.includes("--force");
 
 const SKIP_DIR = /(^|[\\/])(_skipped|_bo-qua|extracted|de-[^\\/]*)([\\/]|$)/;
 
@@ -107,8 +111,9 @@ for (const f of files) {
 
 // build output
 if (!DRY) mkdirSync(OUT, { recursive: true });
-let written = 0, fixedMath = 0, fixedCjk = 0;
+let written = 0, fixedMath = 0, fixedCjk = 0, skipped = 0;
 for (const [slug, rec] of bySlug) {
+  if (!FORCE && existsSync(join(OUT, `${slug}.md`))) { skipped++; continue; }
   let body = rec.body;
   const b1 = fixMath(body);
   if (b1 !== body) { fixedMath++; body = b1; }
@@ -129,4 +134,5 @@ for (const [slug, rec] of bySlug) {
 console.log(`Quét ${files.length} file .md (bỏ ${noFm} file không có slug)`);
 console.log(`Slug duy nhất: ${bySlug.size}`);
 console.log(`Đã sửa khối $$: ${fixedMath} bài | sửa chữ Hán: ${fixedCjk} bài`);
+if (skipped) console.log(`Bỏ qua ${skipped} bài đã có trong web/content (giữ bản đã sửa tay; dùng --force để ghi đè)`);
 console.log(DRY ? "(DRY-RUN, chưa ghi)" : `Đã ghi ${written} file → web/content/bai-giai/`);

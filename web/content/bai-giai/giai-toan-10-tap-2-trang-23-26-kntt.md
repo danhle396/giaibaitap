@@ -109,11 +109,13 @@ Do đó, tập nghiệm của bất phương trình $x^2 - x + 6 > 0$ là $\math
 
 Quả bóng ở độ cao trên $5$ m so với mặt đất khi $h(t) > 5$, tức là $-4,9t^2 + 20t + 1 > 5$.
 
-$\begin{aligned}
--4,9t^2 + 20t + 1 &> 5 \\
--4,9t^2 + 20t - 4 &> 0 \\
-4,9t^2 - 20t + 4 &< 0 \\
-\end{aligned}$
+$$
+\begin{aligned}
+-4{,}9t^2 + 20t + 1 &> 5 \\
+-4{,}9t^2 + 20t - 4 &> 0 \\
+4{,}9t^2 - 20t + 4 &< 0
+\end{aligned}
+$$
 
 Tam thức bậc hai $f(t) = 4,9t^2 - 20t + 4$ có hệ số $a = 4,9 > 0$ và $\Delta = (-20)^2 - 4 \cdot 4,9 \cdot 4 = 400 - 78,4 = 321,6 > 0$.
 

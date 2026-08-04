@@ -199,7 +199,11 @@ $$
 \end{aligned}
 $$
 
-> **Kết quả:** $\begin{aligned}
-&0\le x\le 10, 0\le y\le 9; \\
-&20x + 50y \le 16  
-\end{aligned}$
+> **Kết quả:**
+>
+> $$
+> \begin{aligned}
+> &0 \le x \le 10,\ 0 \le y \le 9; \\
+> &20x + 50y \le 16
+> \end{aligned}
+> $$

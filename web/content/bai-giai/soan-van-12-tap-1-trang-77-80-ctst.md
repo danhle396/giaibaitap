@@ -123,13 +123,13 @@ Nghĩa sĩ Cần Giộc xuất thân từ những người nông dân, như tron
 Những nghĩa sĩ Cần Giộc là những người nông dân nghĩa sĩ, tự nguyện đứng lên chống lại quân xâm lược Pháp. Điều kiện và tình trạng chiến đấu của họ được miêu tả như sau:
 
 - **Điều kiện:** 
-  - Trang bị: "$Cát$: áo rách vai, mình chỉ quấn một manh áo vải đơn sơ. $Bao$ $tấu$, $bầu$ $ngòi$: vũ khí của nghĩa sĩ là những công cụ thô sơ như bao đựng thuốc súng và đạn, bầu đựng ngôi chày.
-  - Tình trạng: "$Vốn$ $chẳng$ $phải$ $quân$ $co$, $quân$ $vệ$, $theo$ $dòng$ ở lĩnh diễn binh; $chẳng$ $qua$ là dân ấp, dân lân, $mến$ nghĩa làm quân chiêu mộ$". Điều này cho thấy họ không phải là lính chính quy, không qua đào tạo bài bản mà là những người dân yêu nước tự nguyện đứng lên cầm súng.
+  - Trang bị: "Cát: áo rách vai, mình chỉ quấn một manh áo vải đơn sơ. Bao tấu, bầu ngòi: vũ khí của nghĩa sĩ là những công cụ thô sơ như bao đựng thuốc súng và đạn, bầu đựng ngôi chày.
+  - Tình trạng: "Vốn chẳng phải quân co, quân vệ, theo dòng ở lĩnh diễn binh; chẳng qua là dân ấp, dân lân, mến nghĩa làm quân chiêu mộ". Điều này cho thấy họ không phải là lính chính quy, không qua đào tạo bài bản mà là những người dân yêu nước tự nguyện đứng lên cầm súng.
 
 - **Tình trạng chiến đấu:** 
-  - "$Mười$ $tám$ $bạn$ $vô$ $nghĩa$, $nào$ $đợi$ $tập$ $rèn$; $chín$ $chục$ $trận$ $bình$ $thư$, $không$ $chờ$ $bày$ $bố$." → Họ chiến đấu một cách tự phát, không có sự chuẩn bị, tập huấn trước, số lần cầm súng ít ỏi, không có chiến thuật, chiến lược cụ thể.
+  - "Mười tám bạn vô nghĩa, nào đợi tập rèn; chín chục trận bình thư, không chờ bày bố." → Họ chiến đấu một cách tự phát, không có sự chuẩn bị, tập huấn trước, số lần cầm súng ít ỏi, không có chiến thuật, chiến lược cụ thể.
 
-  - "$Nào$ $đợi$ $ai$ $đội$, $ai$ $bất$, $phen$ $này$ $xin$ $ra$ $sức$ $đoàn$ $kinh$; $chẳng$ $thèm$ $trốn$ $ngược$ $trốn$ $xuôi$, $chuyển$ $này$ $đốc$ $ra$ $tay$ $bộ$ $hổ$.$" → Họ sẵn sàng chiến đấu với tinh thần quyết tử cho tổ quốc quyết sinh, không màng đến sự sống còn của bản thân.
+  - "Nào đợi ai đội, ai bất, phen này xin ra sức đoàn kinh; chẳng thèm trốn ngược trốn xuôi, chuyển này đốc ra tay bộ hổ." → Họ sẵn sàng chiến đấu với tinh thần quyết tử cho tổ quốc quyết sinh, không màng đến sự sống còn của bản thân.
 
 Như vậy, nghĩa sĩ Cần Giộc chiến đấu trong điều kiện rất khó khăn, thiếu thốn về trang bị và kỹ năng, nhưng họ đã thể hiện tinh thần yêu nước và ý chí chiến đấu mãnh liệt.
 

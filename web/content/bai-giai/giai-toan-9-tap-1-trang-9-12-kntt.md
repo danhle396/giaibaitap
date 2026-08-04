@@ -106,11 +106,14 @@ Biểu diễn hình học: Đây là đường thẳng song song với trục tu
 ## Trang 11 — Bài học về Hệ phương trình bậc nhất hai ẩn
 
 ### Luyện tập 3
-**Bài tập:** Trong hai cặp số $(0; -2)$ và $(2; -1)$, cặp số nào là nghiệm của hệ phương trình 
-$$\begin{cases} 
+**Bài tập:** Trong hai cặp số $(0; -2)$ và $(2; -1)$, cặp số nào là nghiệm của hệ phương trình
+
+$$
+\begin{cases}
 x - 2y = 4 \\
-4x + 3y = 5 
-\end{cases}$$
+4x + 3y = 5
+\end{cases}
+$$
 
 **Lời giải:**
 Thay cặp số $(0; -2)$ vào hệ phương trình, ta có:
@@ -135,10 +138,13 @@ Vậy cặp số $(2; -1)$ là nghiệm của hệ phương trình.
 
 ### Vận dụng
 **Bài toán:** Xét bài toán cổ trong *Tính huống mở đầu*. Gọi $x$ là số cam, $y$ là số quýt cần tính $(x, y \in \mathbb{N}^*)$, ta có hệ phương trình bậc nhất hai ẩn sau:
-$$\begin{cases} 
+
+$$
+\begin{cases}
 x + y = 17 \\
-10x + 3y = 100 
-\end{cases}$$
+10x + 3y = 100
+\end{cases}
+$$
 
 **Lời giải:**
 - Ta sẽ giải hệ phương trình này bằng phương pháp thế hoặc cộng đại số. 

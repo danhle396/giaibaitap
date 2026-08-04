@@ -537,7 +537,7 @@ $$
 
 **Lời giải:**
 - **Điều kiện**: 
-  - Trường hợp $m = 0$: $5x - 3 \leq 0 \Rightarrow
+  - Trường hợp $m = 0$: $5x - 3 \leq 0 \Rightarrow x \leq \dfrac{3}{5}$.
 
 ---
 

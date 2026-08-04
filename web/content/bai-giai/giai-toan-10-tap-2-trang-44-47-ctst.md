@@ -508,7 +508,7 @@ c) $\vec{a} =(-2; -2\sqrt{3}), \vec{b} =(3; \sqrt{3})$.
 
 - $\vec{a} \cdot \vec{b} = (-2) \cdot 3 + (-2\sqrt{3}) \cdot \sqrt{3} = -6 - 6 = -12$.
 
-- $|\vec{a}| = \sqrt{(-2)^2 + (-2\sqrt{3})^2} = \sqrt{4 + 12
+- $|\vec{a}| = \sqrt{(-2)^2 + (-2\sqrt{3})^2} = \sqrt{4 + 12} = \sqrt{16} = 4$.
 
 ---
 

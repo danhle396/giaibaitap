@@ -149,30 +149,22 @@ $$
 I\left(\frac{1+3}{2}, \frac{3+(-1)}{2}\right) = I(2, 1)
 $$
 
-Bán kính $R = \frac{AB}{2} = \frac{\sqrt{(3-1)^2 + (-1-3)^2}}{2} = \frac{\sqrt{4+16}}{2} = \sqrt{5}
-
-$$
+Bán kính $R = \frac{AB}{2} = \frac{\sqrt{(3-1)^2 + (-1-3)^2}}{2} = \frac{\sqrt{4+16}}{2} = \sqrt{5}$.
 
 Phương trình:
 
 $$
-
 (x - 2)^2 + (y - 1)^2 = (\sqrt{5})^2
-
 $$
 
 $$
-
 (x - 2)^2 + (y - 1)^2 = 5
-
 $$
 
 d) Gọi phương trình đường tròn:
 
 $$
-
 x^2 + y^2 + 2ax + 2by + c = 0
-
 $$
 
 Đi qua các điểm $A(1, 2)$, $B(3, 1)$, $C(0, -2)$:
@@ -189,12 +181,10 @@ Thay $c = 4b - 4$ vào hai phương trình trên:
 Giải hệ:
 
 $$
-
 \begin{cases}
 2a + 8b = -1 \\
 6a + 6b = -6
 \end{cases}
-
 $$
 
 $\Rightarrow a = -\frac{3}{2}, b = -\frac{1}{4}, c = -5$.
@@ -202,9 +192,7 @@ $\Rightarrow a = -\frac{3}{2}, b = -\frac{1}{4}, c = -5$.
 Phương trình:
 
 $$
-
 x^2 + y^2 - 3x - \frac{1}{2}y - 5 = 0
-
 $$
 
 **Kết quả:** 
@@ -228,16 +216,15 @@ Ta có điểm $M(-1; 1)$ thuộc đường tròn $(C)$, và vector $\overrighta
 Vector pháp tuyến của đường thẳng tiếp tuyến tại $M$ là $\overrightarrow{n} = (1; -1)$.
 
 Phương trình tiếp tuyến tại $M(-1; 1)$ là: 
-$$
 
+$$
 1(x + 1) - 1(y - 1) = 0
-
 $$
+
 hay 
+
 $$
-
 x - y + 2 = 0.
-
 $$
 
 > **Kết quả:** $x - y + 2 = 0$.
@@ -249,15 +236,14 @@ $$
 Đường tròn có tâm $I(-1; 2)$ và bán kính $R = 2$.
 
 Khoảng cách từ $I$ đến đường thẳng $d: 3x + 4y + m = 0$ là:
+
 $$
-
 d(I, d) = \frac{|3(-1) + 4(2) + m|}{\sqrt{3^2 + 4^2}} = \frac{|-3 + 8 + m|}{5} = \frac{|m + 5|}{5}.
-
 $$
 
 Để đường thẳng $d$ tiếp xúc với đường tròn, ta có:
-$$
 
+$$
 d(I, d) = R \iff \frac{|m + 5|}{5} = 2 \iff |m + 5| = 10 \iff \left[ \begin{aligned} 
 &m + 5 = 10 \\ 
 &m + 5 = -10 
@@ -265,7 +251,6 @@ d(I, d) = R \iff \frac{|m + 5|}{5} = 2 \iff |m + 5| = 10 \iff \left[ \begin{alig
 &m = 5 \\ 
 &m = -15 
 \end{aligned} \right.
-
 $$
 
 > **Kết quả:** $m = 5$ hoặc $m = -15$.
@@ -275,10 +260,9 @@ $$
 
 **Lời giải:**
 Phương trình đường tròn tâm $I(-2; 1)$ bán kính $r = 3$ là:
+
 $$
-
 (x + 2)^2 + (y - 1)^2 = 9.
-
 $$
 
 > **Kết quả:** $(x + 2)^2 + (y - 1)^2 = 9$.
@@ -287,8 +271,8 @@ b) Nếu người sử dụng dịch vụ trạm thu phí thì phải đi theo c
 
 **Lời giải:**
 Tọa độ giao điểm của $d_1$ và $d_2$ là nghiệm của hệ:
-$$
 
+$$
 \begin{cases} 
 x + 2y - 5 = 0 \\ 
 x - 2y + 1 = 0 
@@ -298,14 +282,12 @@ x - 2y + 1 = 0
 x = 2 \\ 
 y = \frac{3}{2} 
 \end{cases}.
-
 $$
 
 Khoảng cách từ $I(-2; 1)$ đến $M(2; \frac{3}{2})$ là:
+
 $$
-
 IM = \sqrt{(2 - (-2))^2 + (\frac{3}{2} - 1)^2} = \sqrt{16 + \frac{1}{4}} = \sqrt{\frac{65}{4}} \approx 4.03 > 3.
-
 $$
 
 Vậy người đó không sử dụng dịch vụ của trạm này.
@@ -318,34 +300,33 @@ c) Tính độ dài quãng đường mà người đó đã đi từ điểm $A$
 Tọa độ $A, B$ là giao của $d_1, d_2$ với đường tròn.
 
 Giải hệ 
-$$
 
+$$
 \begin{cases}
 (x + 2)^2 + (y - 1)^2 = 9 \\
 x + 2y - 5 = 0 
 \end{cases}
-
 $$
+
 ta được $x = 0, y = \frac{5}{2}$ hoặc $x = -4, y = \frac{9}{2}.$
 
 Giải hệ 
-$$
 
+$$
 \begin{cases}
 (x + 2)^2 + (y - 1)^2 = 9 \\
 x - 2y + 1 = 0 
 \end{cases}
-
 $$
+
 ta được $x = 0, y = \frac{1}{2}$ hoặc $x = -4, y = -\frac{3}{2}.$
 
 Chọn $A(0, \frac{5}{2}), B(0, \frac{1}{2}).$
 
 Độ dài $AB$ là:
+
 $$
-
 AB = \left| \frac{5}{2} - \frac{1}{2} \right| = 2.
-
 $$
 
 > **Kết quả:** $2$ km.
@@ -361,19 +342,18 @@ Giả sử đĩa chuyển động trên quĩ đạo của một phần tư parab
 a) Xác định toạ độ điểm $M$ mà tại đó đĩa được ném đi.
 
 **Lời giải:**
-$$
 
+$$
 \begin{aligned}
 y &= \frac{-g}{2v_0^2 \cos^2 \alpha} x^2 + \tan \alpha  \cdot x \\ 
 &= \frac{-9.8}{2 \cdot 10^2 \cos^2 37^\circ} x^2 + \tan 37^\circ  \cdot x \\ 
 &\approx -0.015x^2 + 0.754x. 
 \end{aligned}
-
 $$
 
 Đĩa bay qua $y = 0$ tại 
-$$
 
+$$
 0 = -0.015x^2 + 0.754x 
 \iff 
 x = 0 \quad \text{hoặc} \quad 

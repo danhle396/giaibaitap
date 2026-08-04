@@ -33,12 +33,16 @@ Xét đáp án B:
 - $\overrightarrow{a} = (\sqrt{2}; 6)$, 
 - $\overrightarrow{b} = (1; 3\sqrt{2})$.
 
-Nếu $\overrightarrow{a} = k\overrightarrow{b}$ thì 
-$\begin{cases} 
-\sqrt{2} = k \\ 
-6 = k3\sqrt{2} 
-\end{cases}$ 
-không có $k$ thỏa.
+Nếu $\overrightarrow{a} = k\overrightarrow{b}$ thì
+
+$$
+\begin{cases}
+\sqrt{2} = k \\
+6 = 3k\sqrt{2}
+\end{cases}
+$$
+
+không có $k$ thỏa mãn.
 
 Xét đáp án C: 
 - $\overrightarrow{i} = (0;1)$, 

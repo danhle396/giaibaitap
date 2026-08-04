@@ -99,7 +99,7 @@ $$
 
 Do đó tâm $I$ của đường tròn là điểm $\left(\frac{11}{2}; \frac{5}{2}\right)$.
 
-Bán kính $R = IA = \sqrt{\left(3 - \frac{11}{2}\right)^2 + \left(6 - \frac{5}{2}\right)^2} = \sqrt{\left(-\frac{5}{2}\right)^2 + \left(\frac{7}{2}\right)^2} = \sqrt{\frac{25}{4} + \frac{49}{4}} = \sqrt{\frac{74}{4}} = \frac{\sqrt{74}}{2}.
+Bán kính $R = IA = \sqrt{\left(3 - \frac{11}{2}\right)^2 + \left(6 - \frac{5}{2}\right)^2} = \sqrt{\left(-\frac{5}{2}\right)^2 + \left(\frac{7}{2}\right)^2} = \sqrt{\frac{25}{4} + \frac{49}{4}} = \sqrt{\frac{74}{4}} = \frac{\sqrt{74}}{2}$.
 
 Vậy phương trình đường tròn $(C)$ là 
 

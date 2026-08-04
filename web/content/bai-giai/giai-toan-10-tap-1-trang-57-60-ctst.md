@@ -444,13 +444,17 @@ Xác định giá trị của $m$ và $n$.
 
 Hàm số $y = 2x^2 + mx + n$ có hệ số $a = 2 > 0$, nên hàm số giảm trên $(-\infty; 1)$, tăng trên $(1; +\infty)$ $\Rightarrow$ đỉnh parabol là $(1; 9)$.
 
-$\Rightarrow \begin{cases} 
--\frac{m}{2 \cdot 2} = 1 \\ 
-2 \cdot 1^2 + m \cdot 1 + n = 9 
-\end{cases} \Rightarrow \begin{cases} 
-m = -4 \\ 
-n = 9 
-\end{cases}$
+$$
+\begin{cases}
+-\dfrac{m}{2 \cdot 2} = 1 \\
+2 \cdot 1^2 + m \cdot 1 + n = 9
+\end{cases}
+\Rightarrow
+\begin{cases}
+m = -4 \\
+n = 9
+\end{cases}
+$$
 
 > **Kết quả:** $m = -4$, $n = 9$
 
