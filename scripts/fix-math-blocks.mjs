@@ -5,12 +5,13 @@
  * DÒNG TRỐNG trước/sau. Script thêm dòng trống + bỏ thụt lề cho mọi khối $$.
  * Chạy được nhiều lần (idempotent).
  *
- *   node scripts/fix-math-blocks.mjs [--dry-run]
+ *   node scripts/fix-math-blocks.mjs [--dry-run] [--dir=<thư mục khác>]
  */
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const DIR = join(process.cwd(), "web", "content", "bai-giai");
+const dirArg = process.argv.find((a) => a.startsWith("--dir="));
+const DIR = dirArg ? dirArg.slice(6) : join(process.cwd(), "web", "content", "bai-giai");
 const DRY = process.argv.includes("--dry-run");
 
 function fixMath(src) {

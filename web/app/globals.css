@@ -184,6 +184,18 @@ body {
 }
 .dark .article-body td { border-color: #334155; }
 
+/* Hình cắt từ SGK: nền trắng sẵn trong ảnh nên giữ khung sáng ở cả 2 chế độ */
+.article-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.75rem auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+}
+.dark .article-body img { border-color: #334155; }
+
 /* FAQ pattern: paragraph starting with **Q: / **A: gets visual emphasis */
 .article-body p strong:first-child {
   display: inline-block;
