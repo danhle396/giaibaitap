@@ -4,6 +4,7 @@ import { buildMonUrl, SUBJECT_LABELS, SUBJECTS_BY_GRADE, BO_SACH_LABELS } from "
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
+import { listBaiGiaiSlugs } from "@/lib/strapi";
 import type { Grade, Subject } from "@/types";
 
 interface Props {
@@ -17,10 +18,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { grade } = await params;
   const g = parseInt(grade) as Grade;
+  // Lớp chưa có bài nào thì noindex: người dùng vẫn vào được, nhưng Google không
+  // lập chỉ mục trang rỗng (bị đánh thin content, kéo tụt chất lượng cả site).
+  const slugs = await listBaiGiaiSlugs().catch(() => []);
+  const coBai = slugs.some((b) => String(b.lop) === String(g));
   return buildMetadata({
     title: SEO_TEMPLATES.lop.title(g),
     description: SEO_TEMPLATES.lop.description(g),
     canonical: `/lop-${grade}`,
+    noIndex: !coBai,
   });
 }
 

@@ -11,7 +11,7 @@ import {
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
-import { listChuongByMon, listBaiGiaiByMon, type StrapiBaiGiai } from "@/lib/strapi";
+import { listChuongByMon, listBaiGiaiByMon, listBaiGiaiSlugs, type StrapiBaiGiai } from "@/lib/strapi";
 import type { Grade, Subject, BoSach } from "@/types";
 
 export const revalidate = 3600;
@@ -33,10 +33,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isNaN(g) || g < 1 || g > 12) {
     return buildMetadata({ title: "Không tìm thấy", description: "", canonical: "/", noIndex: true });
   }
+  // Môn chưa có bài nào thì noindex — tránh nộp trang rỗng cho Google.
+  const slugs = await listBaiGiaiSlugs().catch(() => []);
+  const coBai = slugs.some((b) => String(b.lop) === String(g) && b.mon === subject);
   return buildMetadata({
     title: SEO_TEMPLATES.mon.title(g as Grade, subject as Subject),
     description: SEO_TEMPLATES.mon.description(g as Grade, subject as Subject),
     canonical: `/lop-${grade}/${subject}`,
+    noIndex: !coBai,
   });
 }
 

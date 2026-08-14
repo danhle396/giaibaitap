@@ -8,11 +8,14 @@ import { FileText } from "lucide-react";
 
 export const revalidate = 3600;
 
+// Mục đề thi hiện chưa có nội dung → noIndex để Google không nộp trang rỗng.
+// Khi có đề thi đầu tiên thì bỏ noIndex đi.
 export const metadata: Metadata = buildMetadata({
   title: "Đề Thi các cấp — Tốt nghiệp, Vào lớp 10, Giữa kỳ, Cuối kỳ | Giải Bài Tập",
   description:
     "Kho đề thi có đáp án: Đề thi tốt nghiệp THPT, vào lớp 10, giữa kỳ, cuối kỳ tất cả môn. Tải PDF miễn phí.",
   canonical: "/de-thi",
+  noIndex: true,
 });
 
 const LOAI_ENTRIES: Array<{ key: string; label: string }> = [

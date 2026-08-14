@@ -14,6 +14,8 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Luyện trắc nghiệm online tất cả môn học lớp 6-12. Có giải thích đáp án, theo dõi điểm số, ôn thi hiệu quả.",
   canonical: "/trac-nghiem",
+  // Mục trắc nghiệm hiện chưa có nội dung → noIndex. Bỏ đi khi có câu hỏi đầu tiên.
+  noIndex: true,
 });
 
 const DO_KHO_LABELS: Record<string, string> = {
