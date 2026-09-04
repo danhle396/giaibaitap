@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, SUBJECT_LABELS, BO_SACH_LABELS } from "@/lib/url";
+import { buildArticleUrl, buildLopUrl, buildMonUrl, SUBJECT_LABELS, BO_SACH_LABELS } from "@/lib/url";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
@@ -105,7 +105,7 @@ export default async function TypePage({ params }: Props) {
             {list.data.map((b) => (
               <li key={b.id}>
                 <Link
-                  href={buildBaiGiaiUrl({
+                  href={buildArticleUrl({
                     lop: b.lop,
                     mon: b.mon_hoc!.ma,
                     loai: b.loai,

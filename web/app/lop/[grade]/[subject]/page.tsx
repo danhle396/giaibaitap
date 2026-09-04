@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
-  buildBaiGiaiUrl,
+  buildArticleUrl,
   buildLopUrl,
   buildMonUrl,
   SUBJECT_LABELS,
@@ -132,7 +132,7 @@ export default async function MonPage({ params, searchParams }: Props) {
                     {bais.map((b) => (
                       <li key={b.id}>
                         <Link
-                          href={buildBaiGiaiUrl({
+                          href={buildArticleUrl({
                             lop: b.lop,
                             mon: b.mon_hoc!.ma,
                             loai: b.loai,
@@ -161,7 +161,7 @@ export default async function MonPage({ params, searchParams }: Props) {
                 {orphanBai.map((b) => (
                   <li key={b.id}>
                     <Link
-                      href={buildBaiGiaiUrl({
+                      href={buildArticleUrl({
                         lop: b.lop,
                         mon: b.mon_hoc!.ma,
                         loai: b.loai,

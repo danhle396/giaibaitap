@@ -10,6 +10,21 @@ export function buildBaiGiaiUrl(b: {
   return `/lop-${b.lop}/${b.mon}/${b.loai}-${b.mon}-lop-${b.lop}-${b.bo_sach}/${b.slug}`;
 }
 
+/**
+ * URL chính thức của một bài. Bài soạn văn sống ở /soan-van/<slug>, KHÔNG phải
+ * ở /lop-N/van/... — dùng nhầm sẽ tạo hai URL cho cùng một nội dung và Google
+ * đánh dấu trùng lặp. Mọi nơi hiển thị link bài phải gọi hàm này.
+ */
+export function buildArticleUrl(b: {
+  lop: Grade;
+  mon: Subject;
+  loai: BaiGiaiLoai;
+  bo_sach: BoSach;
+  slug: string;
+}): string {
+  return b.loai === "soan-van" ? buildSoanVanUrl(b.slug) : buildBaiGiaiUrl(b);
+}
+
 export function buildLopUrl(grade: Grade): string {
   return `/lop-${grade}`;
 }

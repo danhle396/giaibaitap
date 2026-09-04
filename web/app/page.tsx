@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { BookOpen, FileText, PenTool, Star, ArrowRight, Clock, CheckCircle2 } from "lucide-react";
-import { buildBaiGiaiUrl, buildLopUrl, buildMonUrl, GRADES, SUBJECT_LABELS } from "@/lib/url";
+import { buildArticleUrl, buildLopUrl, buildMonUrl, GRADES, SUBJECT_LABELS } from "@/lib/url";
 import { listRecentBaiGiai } from "@/lib/strapi";
 import { formatDate } from "@/lib/utils";
 import { SearchBox } from "@/components/search/SearchBox";
@@ -176,7 +176,7 @@ export default async function HomePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {recent.map((b) => {
                 if (!b.mon_hoc || !b.bo_sach) return null;
-                const href = buildBaiGiaiUrl({
+                const href = buildArticleUrl({
                   lop: b.lop,
                   mon: b.mon_hoc.ma,
                   loai: b.loai,

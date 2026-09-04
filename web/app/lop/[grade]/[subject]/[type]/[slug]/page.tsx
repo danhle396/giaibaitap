@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { renderMarkdown } from "@/lib/markdown";
 import {
   buildBaiGiaiUrl,
+  buildSoanVanUrl,
   buildLopUrl,
   buildMonUrl,
   SUBJECT_LABELS,
@@ -76,6 +77,9 @@ export default async function BaiGiaiPage({ params }: Props) {
   if (isNaN(g) || g < 1 || g > 12) notFound();
   const b = await getBaiGiaiBySlug(slug).catch(() => null);
   if (!b || !b.mon_hoc || !b.bo_sach) notFound();
+  // Bài soạn văn có URL chính thức là /soan-van/<slug>. Nếu vào bằng đường dài
+  // này thì chuyển hướng 308 để Google gộp về một URL duy nhất.
+  if (b.loai === "soan-van") permanentRedirect(buildSoanVanUrl(b.slug));
 
   const url = buildBaiGiaiUrl({
     lop: b.lop,
