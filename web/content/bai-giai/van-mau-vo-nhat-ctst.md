@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Vợ nhặt - Kim Lân Ngữ Văn 12"
+tieu_de: "Văn mẫu Vợ nhặt - Kim Lân Ngữ Văn 12 (Chân trời sáng tạo)"
 slug: "van-mau-vo-nhat-ctst"
 lop: "12"
 loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
-tom_tat: "Văn mẫu phân tích Vợ nhặt Ngữ Văn 12. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Vợ nhặt - Kim Lân Ngữ Văn 12"
-meta_description: "Văn mẫu Vợ nhặt Ngữ Văn 12. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Vợ nhặt Ngữ Văn 12 bộ Chân trời sáng tạo. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Vợ nhặt - Kim Lân Ngữ Văn 12 (Chân trời sáng tạo)"
+meta_description: "Văn mẫu Vợ nhặt Ngữ Văn 12 bộ Chân trời sáng tạo. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

@@ -1,13 +1,13 @@
 ---
-tieu_de: "Tóm tắt Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12"
+tieu_de: "Tóm tắt Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12 (Chân trời sáng tạo)"
 slug: "tom-tat-chiec-thuyen-ngoai-xa-ctst"
 lop: "12"
 loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
-tom_tat: "Tóm tắt Chiếc thuyền ngoài xa Ngữ Văn 12. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12"
-meta_description: "Tóm tắt Chiếc thuyền ngoài xa Ngữ Văn 12. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
+tom_tat: "Tóm tắt Chiếc thuyền ngoài xa Ngữ Văn 12 bộ Chân trời sáng tạo. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
+meta_title: "Tóm tắt Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12 (Chân trời sáng tạo)"
+meta_description: "Tóm tắt Chiếc thuyền ngoài xa Ngữ Văn 12 bộ Chân trời sáng tạo. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 
 ## Tóm tắt ngắn gọn (100 chữ)

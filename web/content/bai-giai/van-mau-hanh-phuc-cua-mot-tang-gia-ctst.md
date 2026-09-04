@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11"
+tieu_de: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Chân trời sáng tạo)"
 slug: "van-mau-hanh-phuc-cua-mot-tang-gia-ctst"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
-tom_tat: "Văn mẫu phân tích Hạnh phúc của một tang gia Ngữ Văn 11. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ V..."
-meta_description: "Văn mẫu Hạnh phúc của một tang gia Ngữ Văn 11. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Hạnh phúc của một tang gia Ngữ Văn 11 bộ Chân trời sáng tạo. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Chân trời sáng tạo)"
+meta_description: "Văn mẫu Hạnh phúc của một tang gia Ngữ Văn 11 bộ Chân trời sáng tạo. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

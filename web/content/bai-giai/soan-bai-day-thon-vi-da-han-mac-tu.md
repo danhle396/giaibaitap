@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "ket-noi-tri-thuc"
 tom_tat: "Soạn bài Đây thôn Vĩ Dạ Ngữ Văn 11 Kết nối tri thức. Hướng dẫn soạn bài chi tiết, trả lời đầy đủ các câu hỏi trong sách giáo khoa."
-meta_title: "Soạn bài Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 Kết nối t..."
+meta_title: "Soạn bài Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 Kết nối tri thức"
 meta_description: "Soạn bài Đây thôn Vĩ Dạ Ngữ Văn 11 Kết nối tri thức. Trả lời câu hỏi SGK, phân tích nội dung, nghệ thuật đầy đủ nhất."
 ---
 

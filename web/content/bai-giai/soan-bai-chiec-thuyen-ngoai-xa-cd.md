@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
 tom_tat: "Soạn bài Chiếc thuyền ngoài xa Ngữ Văn 12 Cánh diều. Hướng dẫn soạn bài chi tiết, trả lời đầy đủ các câu hỏi trong sách giáo khoa."
-meta_title: "Soạn bài Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn..."
+meta_title: "Soạn bài Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12 Cánh diều"
 meta_description: "Soạn bài Chiếc thuyền ngoài xa Ngữ Văn 12 Cánh diều. Trả lời câu hỏi SGK, phân tích nội dung, nghệ thuật đầy đủ nhất."
 ---
 

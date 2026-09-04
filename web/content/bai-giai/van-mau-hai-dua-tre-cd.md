@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Hai đứa trẻ - Thạch Lam Ngữ Văn 11"
+tieu_de: "Văn mẫu Hai đứa trẻ - Thạch Lam Ngữ Văn 11 (Cánh diều)"
 slug: "van-mau-hai-dua-tre-cd"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
-tom_tat: "Văn mẫu phân tích Hai đứa trẻ Ngữ Văn 11. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Hai đứa trẻ - Thạch Lam Ngữ Văn 11"
-meta_description: "Văn mẫu Hai đứa trẻ Ngữ Văn 11. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Hai đứa trẻ Ngữ Văn 11 bộ Cánh diều. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Hai đứa trẻ - Thạch Lam Ngữ Văn 11 (Cánh diều)"
+meta_description: "Văn mẫu Hai đứa trẻ Ngữ Văn 11 bộ Cánh diều. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

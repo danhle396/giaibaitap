@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
 tom_tat: "Soạn bài Đây thôn Vĩ Dạ Ngữ Văn 11 Chân trời sáng tạo. Hướng dẫn soạn bài chi tiết, trả lời đầy đủ các câu hỏi trong sách giáo khoa."
-meta_title: "Soạn bài Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 Chân trời..."
+meta_title: "Soạn bài Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 Chân trời sáng tạo"
 meta_description: "Soạn bài Đây thôn Vĩ Dạ Ngữ Văn 11 Chân trời sáng tạo. Trả lời câu hỏi SGK, phân tích nội dung, nghệ thuật đầy đủ nhất."
 ---
 

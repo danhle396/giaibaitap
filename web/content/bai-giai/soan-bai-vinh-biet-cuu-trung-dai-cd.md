@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
 tom_tat: "Soạn bài Vĩnh biệt Cửu Trùng Đài Ngữ Văn 11 Cánh diều. Hướng dẫn soạn bài chi tiết, trả lời đầy đủ các câu hỏi trong sách giáo khoa."
-meta_title: "Soạn bài Vĩnh biệt Cửu Trùng Đài - Nguyễn Huy Tưởng Ngữ V..."
+meta_title: "Soạn bài Vĩnh biệt Cửu Trùng Đài - Nguyễn Huy Tưởng Ngữ Văn 11 Cánh diều"
 meta_description: "Soạn bài Vĩnh biệt Cửu Trùng Đài Ngữ Văn 11 Cánh diều. Trả lời câu hỏi SGK, phân tích nội dung, nghệ thuật đầy đủ nhất."
 ---
 

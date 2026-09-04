@@ -1,13 +1,13 @@
 ---
-tieu_de: "Tóm tắt Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11"
+tieu_de: "Tóm tắt Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 (Kết nối tri thức)"
 slug: "tom-tat-day-thon-vi-da-han-mac-tu"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "ket-noi-tri-thuc"
-tom_tat: "Tóm tắt Đây thôn Vĩ Dạ Ngữ Văn 11. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11"
-meta_description: "Tóm tắt Đây thôn Vĩ Dạ Ngữ Văn 11. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
+tom_tat: "Tóm tắt Đây thôn Vĩ Dạ Ngữ Văn 11 bộ Kết nối tri thức. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
+meta_title: "Tóm tắt Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 (Kết nối tri thức)"
+meta_description: "Tóm tắt Đây thôn Vĩ Dạ Ngữ Văn 11 bộ Kết nối tri thức. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 
 ## Tóm tắt ngắn gọn (100 chữ)

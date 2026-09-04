@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Đất Nước - Nguyễn Khoa Điềm Ngữ Văn 12"
+tieu_de: "Văn mẫu Đất Nước - Nguyễn Khoa Điềm Ngữ Văn 12 (Chân trời sáng tạo)"
 slug: "van-mau-dat-nuoc-ctst"
 lop: "12"
 loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
-tom_tat: "Văn mẫu phân tích Đất Nước Ngữ Văn 12. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Đất Nước - Nguyễn Khoa Điềm Ngữ Văn 12"
-meta_description: "Văn mẫu Đất Nước Ngữ Văn 12. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Đất Nước Ngữ Văn 12 bộ Chân trời sáng tạo. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Đất Nước - Nguyễn Khoa Điềm Ngữ Văn 12 (Chân trời sáng tạo)"
+meta_description: "Văn mẫu Đất Nước Ngữ Văn 12 bộ Chân trời sáng tạo. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

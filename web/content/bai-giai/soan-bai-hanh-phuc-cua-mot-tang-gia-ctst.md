@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
 tom_tat: "Soạn bài Hạnh phúc của một tang gia Ngữ Văn 11 Chân trời sáng tạo. Hướng dẫn soạn bài chi tiết, trả lời đầy đủ các câu hỏi trong sách giáo khoa."
-meta_title: "Soạn bài Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ ..."
+meta_title: "Soạn bài Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 Chân trời sáng tạo"
 meta_description: "Soạn bài Hạnh phúc của một tang gia Ngữ Văn 11 Chân trời sáng tạo. Trả lời câu hỏi SGK, phân tích nội dung, nghệ thuật đầy đủ nhất."
 ---
 

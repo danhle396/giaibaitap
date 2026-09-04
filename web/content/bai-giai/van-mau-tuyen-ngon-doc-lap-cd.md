@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Tuyên ngôn Độc lập - Hồ Chí Minh Ngữ Văn 12"
+tieu_de: "Văn mẫu Tuyên ngôn Độc lập - Hồ Chí Minh Ngữ Văn 12 (Cánh diều)"
 slug: "van-mau-tuyen-ngon-doc-lap-cd"
 lop: "12"
 loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
-tom_tat: "Văn mẫu phân tích Tuyên ngôn Độc lập Ngữ Văn 12. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Tuyên ngôn Độc lập - Hồ Chí Minh Ngữ Văn 12"
-meta_description: "Văn mẫu Tuyên ngôn Độc lập Ngữ Văn 12. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Tuyên ngôn Độc lập Ngữ Văn 12 bộ Cánh diều. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Tuyên ngôn Độc lập - Hồ Chí Minh Ngữ Văn 12 (Cánh diều)"
+meta_description: "Văn mẫu Tuyên ngôn Độc lập Ngữ Văn 12 bộ Cánh diều. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

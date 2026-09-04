@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11"
+tieu_de: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Kết nối tri thức)"
 slug: "van-mau-hanh-phuc-cua-mot-tang-gia"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "ket-noi-tri-thuc"
-tom_tat: "Văn mẫu phân tích Hạnh phúc của một tang gia Ngữ Văn 11. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ V..."
-meta_description: "Văn mẫu Hạnh phúc của một tang gia Ngữ Văn 11. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Hạnh phúc của một tang gia Ngữ Văn 11 bộ Kết nối tri thức. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Kết nối tri thức)"
+meta_description: "Văn mẫu Hạnh phúc của một tang gia Ngữ Văn 11 bộ Kết nối tri thức. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

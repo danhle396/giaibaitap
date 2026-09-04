@@ -6,7 +6,7 @@ loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
 tom_tat: "Tóm tắt Hồn Trương Ba, da hàng thịt Ngữ Văn 12. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Hồn Trương Ba, da hàng thịt - Lưu Quang Vũ Ngữ Vă..."
+meta_title: "Tóm tắt Hồn Trương Ba, da hàng thịt - Lưu Quang Vũ Ngữ Văn 12"
 meta_description: "Tóm tắt Hồn Trương Ba, da hàng thịt Ngữ Văn 12. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 

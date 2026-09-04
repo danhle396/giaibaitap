@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12"
+tieu_de: "Văn mẫu Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12 (Cánh diều)"
 slug: "van-mau-chiec-thuyen-ngoai-xa-cd"
 lop: "12"
 loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
-tom_tat: "Văn mẫu phân tích Chiếc thuyền ngoài xa Ngữ Văn 12. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12"
-meta_description: "Văn mẫu Chiếc thuyền ngoài xa Ngữ Văn 12. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Chiếc thuyền ngoài xa Ngữ Văn 12 bộ Cánh diều. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Chiếc thuyền ngoài xa - Nguyễn Minh Châu Ngữ Văn 12 (Cánh diều)"
+meta_description: "Văn mẫu Chiếc thuyền ngoài xa Ngữ Văn 12 bộ Cánh diều. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

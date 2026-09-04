@@ -1,13 +1,13 @@
 ---
-tieu_de: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11"
+tieu_de: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11 (Cánh diều)"
 slug: "tom-tat-chi-pheo-cd"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "canh-dieu"
-tom_tat: "Tóm tắt Chí Phèo Ngữ Văn 11. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11"
-meta_description: "Tóm tắt Chí Phèo Ngữ Văn 11. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
+tom_tat: "Tóm tắt Chí Phèo Ngữ Văn 11 bộ Cánh diều. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
+meta_title: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11 (Cánh diều)"
+meta_description: "Tóm tắt Chí Phèo Ngữ Văn 11 bộ Cánh diều. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 
 ## Tóm tắt ngắn gọn (100 chữ)

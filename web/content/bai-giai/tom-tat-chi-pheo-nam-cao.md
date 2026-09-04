@@ -1,13 +1,13 @@
 ---
-tieu_de: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11"
+tieu_de: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11 (Kết nối tri thức)"
 slug: "tom-tat-chi-pheo-nam-cao"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "ket-noi-tri-thuc"
-tom_tat: "Tóm tắt Chí Phèo Ngữ Văn 11. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11"
-meta_description: "Tóm tắt Chí Phèo Ngữ Văn 11. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
+tom_tat: "Tóm tắt Chí Phèo Ngữ Văn 11 bộ Kết nối tri thức. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
+meta_title: "Tóm tắt Chí Phèo - Nam Cao Ngữ Văn 11 (Kết nối tri thức)"
+meta_description: "Tóm tắt Chí Phèo Ngữ Văn 11 bộ Kết nối tri thức. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 
 ## Tóm tắt ngắn gọn (100 chữ)

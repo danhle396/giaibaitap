@@ -1,13 +1,13 @@
 ---
-tieu_de: "Văn mẫu Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11"
+tieu_de: "Văn mẫu Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 (Kết nối tri thức)"
 slug: "van-mau-day-thon-vi-da-han-mac-tu"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "ket-noi-tri-thuc"
-tom_tat: "Văn mẫu phân tích Đây thôn Vĩ Dạ Ngữ Văn 11. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
-meta_title: "Văn mẫu Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11"
-meta_description: "Văn mẫu Đây thôn Vĩ Dạ Ngữ Văn 11. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
+tom_tat: "Văn mẫu phân tích Đây thôn Vĩ Dạ Ngữ Văn 11 bộ Kết nối tri thức. Các bài văn mẫu hay, dàn ý chi tiết cho học sinh tham khảo."
+meta_title: "Văn mẫu Đây thôn Vĩ Dạ - Hàn Mặc Tử Ngữ Văn 11 (Kết nối tri thức)"
+meta_description: "Văn mẫu Đây thôn Vĩ Dạ Ngữ Văn 11 bộ Kết nối tri thức. Tuyển chọn các bài văn hay, phân tích sâu sắc cho học sinh."
 ---
 
 ## Dàn ý chi tiết

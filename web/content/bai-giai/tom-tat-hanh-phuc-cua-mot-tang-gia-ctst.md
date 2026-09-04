@@ -1,13 +1,13 @@
 ---
-tieu_de: "Tóm tắt Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11"
+tieu_de: "Tóm tắt Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Chân trời sáng tạo)"
 slug: "tom-tat-hanh-phuc-cua-mot-tang-gia-ctst"
 lop: "11"
 loai: "soan-van"
 mon: "van"
 bo_sach: "chan-troi-sang-tao"
-tom_tat: "Tóm tắt Hạnh phúc của một tang gia Ngữ Văn 11. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
-meta_title: "Tóm tắt Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ V..."
-meta_description: "Tóm tắt Hạnh phúc của một tang gia Ngữ Văn 11. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
+tom_tat: "Tóm tắt Hạnh phúc của một tang gia Ngữ Văn 11 bộ Chân trời sáng tạo. Tóm tắt ngắn gọn và đầy đủ nội dung tác phẩm theo chương trình học."
+meta_title: "Tóm tắt Hạnh phúc của một tang gia - Vũ Trọng Phụng Ngữ Văn 11 (Chân trời sáng tạo)"
+meta_description: "Tóm tắt Hạnh phúc của một tang gia Ngữ Văn 11 bộ Chân trời sáng tạo. Tóm tắt ngắn gọn, đầy đủ nội dung chính của tác phẩm."
 ---
 
 ## Tóm tắt ngắn gọn (100 chữ)
