@@ -47,6 +47,18 @@ const FORMAT_RULES = `QUY TẮC ĐỊNH DẠNG (BẮT BUỘC — bài sẽ đư�
 - Nếu đề có dòng ảnh dạng ![...](/hinh/...): CHÉP LẠI NGUYÊN VĂN dòng đó vào lời giải, đặt ngay dưới đề bài tương ứng, trên một DÒNG RIÊNG. Không đổi đường dẫn, không bịa thêm ảnh mới.
 - Không lời chào, không nói về bản thân, không thêm phần ngoài đề.`;
 
+/** Quy tắc riêng cho môn Văn — rủi ro lớn nhất là bịa chi tiết không có trong văn bản. */
+const VAN_RULES = `QUY TẮC SOẠN VĂN (BẮT BUỘC):
+- Trả lời ĐỦ mọi câu hỏi trong đề, theo đúng thứ tự và đúng số hiệu câu. Không gộp, không bỏ câu nào.
+- Mỗi câu trả lời phải BÁM VÀO VĂN BẢN đã cho: dẫn lại chi tiết, hình ảnh, câu chữ cụ thể có thật trong văn bản.
+- TUYỆT ĐỐI KHÔNG bịa chi tiết, nhân vật, câu trích, tên tác giả hay số liệu không có trong văn bản ở đề. Nếu đề không cung cấp đủ dữ kiện để trả lời, ghi rõ "*Cần đọc thêm văn bản trong SGK để trả lời đầy đủ.*" thay vì suy đoán.
+- Với câu hỏi mở (hỏi ý kiến, cảm nhận riêng): nêu một quan điểm rõ ràng rồi lập luận, không trả lời chung chung nước đôi.
+- Với yêu cầu viết đoạn văn: viết THÀNH ĐOẠN HOÀN CHỈNH đúng số chữ đề yêu cầu, không chỉ nêu dàn ý.
+- Văn phong sáng rõ, đúng mực, dành cho học sinh; không sáo rỗng, không lặp ý.
+- Định dạng Markdown: in đậm số hiệu câu, chép lại câu hỏi ngắn gọn, rồi xuống dòng trả lời.
+- Nếu đề có dòng ảnh dạng ![...](/hinh/...): CHÉP LẠI NGUYÊN VĂN dòng đó, trên một DÒNG RIÊNG.
+- Không lời chào, không nói về bản thân, không thêm phần ngoài đề.`;
+
 function parseFrontmatter(src) {
   const m = src.replace(/\r\n/g, "\n").match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   if (!m) return null;
@@ -106,9 +118,10 @@ for (const name of files) {
     skip++; continue;
   }
 
-  const prompt = `Bạn là giáo viên giỏi, đang soạn lời giải cho sách giáo khoa Việt Nam.
+  const laVan = (parsed.fm.mon ?? "") === "van";
+  const prompt = `Bạn là giáo viên ${laVan ? "Ngữ văn" : "Toán"} giỏi, đang soạn ${laVan ? "bài soạn" : "lời giải"} cho sách giáo khoa Việt Nam.
 
-${FORMAT_RULES}
+${laVan ? VAN_RULES : FORMAT_RULES}
 
 ĐỀ BÀI (chép nguyên văn từ SGK ${parsed.fm.sach ?? ""} lớp ${parsed.fm.lop ?? ""}, trang ${parsed.fm.trang ?? ""}):
 
@@ -124,7 +137,7 @@ ${parsed.body.trim()}`;
       `tieu_de: "${parsed.fm.tieu_de ?? slug}"`,
       `slug: "${slug}"`,
       `lop: "${parsed.fm.lop ?? ""}"`,
-      `loai: "giai-sgk"`,
+      `loai: "${parsed.fm.loai ?? "giai-sgk"}"`,
       `mon: "${parsed.fm.mon ?? "toan"}"`,
       `bo_sach: "${parsed.fm.bo_sach ?? ""}"`,
       ...(parsed.fm.tom_tat ? [`tom_tat: "${parsed.fm.tom_tat}"`] : []),
