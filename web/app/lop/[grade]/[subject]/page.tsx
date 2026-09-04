@@ -11,14 +11,13 @@ import {
 import { buildMetadata, SEO_TEMPLATES } from "@/lib/seo";
 import { Breadcrumb } from "@/components/layout/Breadcrumb";
 import { BreadcrumbSchema } from "@/components/seo/BreadcrumbSchema";
-import { listChuongByMon, listBaiGiaiByMon, listBaiGiaiSlugs, type StrapiBaiGiai } from "@/lib/strapi";
+import { listBaiGiaiByMon, listBaiGiaiSlugs, type StrapiBaiGiai } from "@/lib/strapi";
 import type { Grade, Subject, BoSach } from "@/types";
 
 export const revalidate = 3600;
 
 interface Props {
   params: Promise<{ grade: string; subject: string }>;
-  searchParams: Promise<{ "bo-sach"?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -45,31 +44,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 const BO_SACHS: BoSach[] = ["ket-noi-tri-thuc", "chan-troi-sang-tao", "canh-dieu"];
-const ALLOWED_BO_SACH = new Set<string>(BO_SACHS);
 
-export default async function MonPage({ params, searchParams }: Props) {
+export default async function MonPage({ params }: Props) {
   const { grade, subject } = await params;
-  const sp = await searchParams;
   const g = parseInt(grade);
   if (isNaN(g) || g < 1 || g > 12) notFound();
   const gTyped = g as Grade;
   const sub = subject as Subject;
-  const activeBoSach: BoSach =
-    sp["bo-sach"] && ALLOWED_BO_SACH.has(sp["bo-sach"]) ? (sp["bo-sach"] as BoSach) : BO_SACHS[0];
-
-  const [chuongs, allBai] = await Promise.all([
-    listChuongByMon({ lop: gTyped, monMa: sub, boSachMa: activeBoSach }).catch(() => []),
-    listBaiGiaiByMon({ lop: gTyped, monMa: sub, boSachMa: activeBoSach, pageSize: 200 }).catch(
-      () => ({ data: [] as StrapiBaiGiai[] }),
+  // Lấy bài của CẢ BA bộ sách rồi hiển thị hết. Trước đây chỉ hiện 1 bộ, 2 bộ còn
+  // lại nằm sau ?bo-sach= nên hàng trăm bài không có liên kết thường nào trỏ tới —
+  // Google không phát hiện ra chúng ("Đã phát hiện - chưa lập chỉ mục").
+  const perBoSach = await Promise.all(
+    BO_SACHS.map((bs) =>
+      listBaiGiaiByMon({ lop: gTyped, monMa: sub, boSachMa: bs, pageSize: 500 })
+        .then((r) => [bs, r.data] as const)
+        .catch(() => [bs, [] as StrapiBaiGiai[]] as const),
     ),
-  ]);
-  const baiByChuong = new Map<string, StrapiBaiGiai[]>();
-  for (const b of allBai.data) {
-    const key = b.chuong?.slug ?? "_no_chuong";
-    if (!baiByChuong.has(key)) baiByChuong.set(key, []);
-    baiByChuong.get(key)!.push(b);
-  }
-  const orphanBai = baiByChuong.get("_no_chuong") ?? [];
+  );
+  const tongBai = perBoSach.reduce((n, [, list]) => n + list.length, 0);
 
   const breadcrumbs = [
     { label: `Lớp ${gTyped}`, href: buildLopUrl(gTyped) },
@@ -89,94 +81,42 @@ export default async function MonPage({ params, searchParams }: Props) {
         nối tri thức, Chân trời sáng tạo, Cánh Diều.
       </p>
 
-      {/* Bộ sách tabs */}
-      <div className="flex gap-2 mb-8 flex-wrap">
-        {BO_SACHS.map((bs) => (
-          <Link
-            key={bs}
-            href={`/lop-${grade}/${subject}?bo-sach=${bs}`}
-            className={
-              "px-4 py-2 text-sm rounded-lg border font-medium transition-colors " +
-              (bs === activeBoSach
-                ? "border-blue-600 bg-blue-600 text-white"
-                : "border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-400")
-            }
-          >
-            {BO_SACH_LABELS[bs]}
-          </Link>
-        ))}
-      </div>
-
-      {chuongs.length === 0 && orphanBai.length === 0 ? (
+      {tongBai === 0 ? (
         <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded-xl p-6 text-sm text-yellow-800 dark:text-yellow-300">
-          Chưa có bài giải cho {SUBJECT_LABELS[sub]} lớp {gTyped} bộ {BO_SACH_LABELS[activeBoSach]}.
+          Chưa có bài giải cho {SUBJECT_LABELS[sub]} lớp {gTyped}.
         </div>
       ) : (
-        <div className="space-y-6">
-          {chuongs.map((ch) => {
-            const bais = baiByChuong.get(ch.slug) ?? [];
-            return (
-              <div
-                key={ch.id}
-                className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden"
-              >
-                <div className="bg-blue-50 dark:bg-gray-700 px-5 py-3 border-b border-gray-200 dark:border-gray-600">
-                  <h2 className="font-semibold text-gray-900 dark:text-white text-sm">{ch.ten}</h2>
-                </div>
-                {bais.length === 0 ? (
-                  <p className="px-5 py-3 text-xs text-gray-500 dark:text-gray-400">
-                    Chưa có bài giải nào trong chương này.
-                  </p>
-                ) : (
-                  <ul className="divide-y divide-gray-100 dark:divide-gray-700">
-                    {bais.map((b) => (
-                      <li key={b.id}>
-                        <Link
-                          href={buildArticleUrl({
-                            lop: b.lop,
-                            mon: b.mon_hoc!.ma,
-                            loai: b.loai,
-                            bo_sach: b.bo_sach!.ma,
-                            slug: b.slug,
-                          })}
-                          className="flex items-center px-5 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-700 dark:text-gray-200 transition-colors"
-                        >
-                          <span className="mr-3 text-xs text-gray-400">{b.bai_so ?? ""}</span>
-                          {b.tieu_de}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            );
-          })}
-
-          {orphanBai.length > 0 && (
-            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
-              <div className="bg-gray-50 dark:bg-gray-700 px-5 py-3 border-b border-gray-200 dark:border-gray-600">
-                <h2 className="font-semibold text-gray-900 dark:text-white text-sm">Khác</h2>
-              </div>
-              <ul className="divide-y divide-gray-100 dark:divide-gray-700">
-                {orphanBai.map((b) => (
-                  <li key={b.id}>
-                    <Link
-                      href={buildArticleUrl({
-                        lop: b.lop,
-                        mon: b.mon_hoc!.ma,
-                        loai: b.loai,
-                        bo_sach: b.bo_sach!.ma,
-                        slug: b.slug,
-                      })}
-                      className="flex items-center px-5 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-700 dark:text-gray-200 transition-colors"
-                    >
-                      <span className="mr-3 text-xs text-gray-400">{b.bai_so ?? ""}</span>
-                      {b.tieu_de}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="space-y-8">
+          {perBoSach.map(([bs, list]) =>
+            list.length === 0 ? null : (
+              <section key={bs} id={bs}>
+                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                  {BO_SACH_LABELS[bs]}
+                  <span className="ml-2 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {list.length} bài
+                  </span>
+                </h2>
+                <ul className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden divide-y divide-gray-100 dark:divide-gray-700">
+                  {list.map((b) => (
+                    <li key={b.id}>
+                      <Link
+                        href={buildArticleUrl({
+                          lop: b.lop,
+                          mon: b.mon_hoc!.ma,
+                          loai: b.loai,
+                          bo_sach: b.bo_sach!.ma,
+                          slug: b.slug,
+                        })}
+                        className="flex items-center px-5 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 text-sm text-gray-700 dark:text-gray-200 transition-colors"
+                      >
+                        <span className="mr-3 text-xs text-gray-400">{b.bai_so ?? ""}</span>
+                        {b.tieu_de}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ),
           )}
         </div>
       )}

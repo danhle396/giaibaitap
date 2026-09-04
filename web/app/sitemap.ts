@@ -26,7 +26,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(tracNghiemList.data.length
       ? [{ url: `${BASE_URL}/trac-nghiem`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.8 }]
       : []),
-    { url: `${BASE_URL}/tim-kiem`, lastModified: now, changeFrequency: "monthly", priority: 0.3 },
     { url: `${BASE_URL}/gioi-thieu`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE_URL}/lien-he`, lastModified: now, changeFrequency: "monthly", priority: 0.4 },
     { url: `${BASE_URL}/chinh-sach-bao-mat`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
