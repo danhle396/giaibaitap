@@ -14,12 +14,6 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        // Decap CMS là HTML tĩnh trong public/admin/. Next không tự phục vụ
-        // index.html cho đường dẫn thư mục nên phải trỏ tay.
-        source: "/admin",
-        destination: "/admin/index.html",
-      },
-      {
         source: "/lop-:grade(\\d+)",
         destination: "/lop/:grade",
       },
