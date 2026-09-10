@@ -1,0 +1,97 @@
+backend:
+  name: github
+  repo: danhle396/giaibaitap
+  branch: main
+  base_url: https://giaibaitap247.com
+  auth_endpoint: api/admin/auth
+
+# Ảnh cắt từ SGK. Đường dẫn trong bài là /hinh/... nên public_folder phải khớp.
+media_folder: web/public/hinh
+public_folder: /hinh
+
+locale: vi
+publish_mode: simple
+site_url: https://giaibaitap247.com
+
+collections:
+  - name: bai-giai
+    label: Bài giải & Soạn văn
+    label_singular: bài
+    folder: web/content/bai-giai
+    create: true
+    delete: true
+    extension: md
+    format: yaml-frontmatter
+    slug: "{{fields.slug}}"
+    identifier_field: tieu_de
+    summary: "{{tieu_de}}"
+    sortable_fields: [tieu_de, lop, mon]
+    view_filters:
+      - { label: Ngữ văn, field: mon, pattern: van }
+      - { label: Toán, field: mon, pattern: toan }
+      - { label: Lớp 9, field: lop, pattern: "9" }
+      - { label: Lớp 10, field: lop, pattern: "10" }
+      - { label: Lớp 11, field: lop, pattern: "11" }
+      - { label: Lớp 12, field: lop, pattern: "12" }
+    fields:
+      - label: Tiêu đề hiển thị
+        name: tieu_de
+        widget: string
+        hint: Tên bài hiện trên trang. Bài của các bộ sách khác nhau phải đặt tên khác nhau, nếu không Google gộp lại.
+
+      - label: Slug (đường dẫn)
+        name: slug
+        widget: string
+        pattern: ["^[a-z0-9-]+$", "Chỉ dùng chữ thường không dấu, số và dấu gạch ngang"]
+        hint: "Ví dụ: soan-van-10-tap-1-trang-11-14-kntt. Đổi slug là đổi địa chỉ bài — cân nhắc kỹ với bài đã đăng."
+
+      - label: Lớp
+        name: lop
+        widget: select
+        options: ["6", "7", "8", "9", "10", "11", "12"]
+
+      - label: Loại bài
+        name: loai
+        widget: select
+        default: soan-van
+        options:
+          - { label: Soạn văn, value: soan-van }
+          - { label: Giải SGK, value: giai-sgk }
+        hint: Chọn sai loại là bài vào nhầm đường dẫn và không hiển thị được.
+
+      - label: Môn
+        name: mon
+        widget: select
+        default: van
+        options:
+          - { label: Ngữ văn, value: van }
+          - { label: Toán, value: toan }
+
+      - label: Bộ sách
+        name: bo_sach
+        widget: select
+        options:
+          - { label: Kết nối tri thức, value: ket-noi-tri-thuc }
+          - { label: Chân trời sáng tạo, value: chan-troi-sang-tao }
+          - { label: Cánh diều, value: canh-dieu }
+
+      - label: Tóm tắt
+        name: tom_tat
+        widget: text
+        required: false
+
+      - label: Meta title (SEO)
+        name: meta_title
+        widget: string
+        required: false
+        hint: Tiêu đề hiện trên Google. Phải khác nhau giữa các bài, kể cả cùng tác phẩm khác bộ sách.
+
+      - label: Meta description (SEO)
+        name: meta_description
+        widget: text
+        required: false
+        hint: Khoảng 150-160 ký tự.
+
+      - label: Nội dung bài
+        name: body
+        widget: markdown
