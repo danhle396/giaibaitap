@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>Quản trị nội dung — Giải Bài Tập 247</title>
+    <!--
+      Bắt buộc chỉ đường dẫn TUYỆT ĐỐI tới config.yml. Trang phục vụ tại /admin
+      (không có gạch chéo cuối) nên trình duyệt coi "admin" là tên tệp và giải
+      đường dẫn tương đối về gốc site — Decap sẽ tìm /config.yml và nhận 404.
+    -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.8.4/dist/decap-cms.js"></script>
